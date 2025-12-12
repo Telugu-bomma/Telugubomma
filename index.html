@@ -6,135 +6,110 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #0d0d0d;
-        color: #fff;
-    }
+/* PAGE FADE-IN EFFECT */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0d0d0d;
+    color: #fff;
+    animation: fadeIn 0.6s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
-    /* HEADER */
-    .header {
-        text-align: center;
-        padding: 25px;
-        border-bottom: 2px solid #333;
-        background: #000;
-    }
-    .header-title {
-        color: #00ff00;
-        font-size: 32px;
-        font-weight: bold;
-    }
-    .header-sub {
-        color: #ccc;
-        font-size: 18px;
-    }
-    .header-tag {
-        color: #bbb;
-        font-size: 16px;
-        margin-bottom: 15px;
-    }
+/* HEADER GLASS EFFECT */
+.header {
+    text-align: center;
+    padding: 25px;
+    border-bottom: 2px solid #1f1f1f;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+}
+.header-title {
+    color: #00ff00;
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 0 0 10px #007700;
+}
+.header-sub {
+    color: #ccc;
+    font-size: 18px;
+}
+.header-tag {
+    color: #bbb;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
 
-    /* SEARCH BAR */
-    .search-container {
-        text-align: center;
-        margin: 15px;
-    }
-    #searchBox {
-        width: 80%;
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 8px;
-        border: none;
-        outline: none;
-    }
+/* TOP MENU */
+.menu {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.menu a {
+    color: #00ff00;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+}
 
-    /* REQUEST BUTTON */
-    .request-btn {
-        display: block;
-        margin: 10px auto;
-        background: #00ff00;
-        color: black;
-        padding: 10px 20px;
-        border-radius: 8px;
-        font-weight: bold;
-        width: 200px;
-        text-align: center;
-        cursor: pointer;
-    }
+/* SEARCH BAR */
+.search-container {
+    text-align: center;
+    margin: 15px;
+}
+#searchBox {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+}
 
-    /* POPUP FORM */
-    .popup {
-        display: none;
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(0,0,0,0.8);
-        justify-content: center;
-        align-items: center;
-    }
-    .popup-box {
-        background: #111;
-        padding: 20px;
-        width: 85%;
-        max-width: 400px;
-        border-radius: 10px;
-        border: 2px solid #00ff00;
-    }
-    .popup textarea {
-        width: 100%;
-        height: 120px;
-        padding: 10px;
-        border-radius: 6px;
-        border: none;
-    }
-    .popup button {
-        margin-top: 10px;
-        width: 100%;
-        padding: 10px;
-        background: #00ff00;
-        color: black;
-        font-weight: bold;
-        border-radius: 6px;
-        border: none;
-        cursor: pointer;
-    }
+/* GRID */
+.grid {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
 
-    /* GRID */
-    .grid {
-        padding: 20px;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 12px;
-    }
+.card {
+    background: rgba(17, 17, 17, 0.7);
+    border: 1px solid #222;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    backdrop-filter: blur(6px);
+    transition: 0.25s;
+}
+.card:hover {
+    transform: scale(1.06);
+    border-color: #00ff00;
+}
+.thumb {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+}
+.card-title {
+    padding: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #00ff00;
+}
 
-    .card {
-        background: #111;
-        border: 1px solid #222;
-        border-radius: 10px;
-        overflow: hidden;
-        text-align: center;
-        transition: 0.25s;
-    }
-    .card:hover {
-        transform: scale(1.06);
-        border-color: #00ff00;
-    }
-
-    .thumb {
-        width: 100%;
-        height: 90px;
-        object-fit: cover;
-    }
-
-    .card-title {
-        padding: 8px;
-        font-size: 14px;
-        font-weight: bold;
-        color: #00ff00;
-    }
-
-    a { text-decoration: none; }
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #222;
+    margin-top: 20px;
+    color: #aaa;
+    font-size: 14px;
+}
 </style>
 </head>
 
@@ -147,22 +122,15 @@
     <div class="header-tag">Your happiness is my happiness 😊</div>
 </div>
 
-<!-- SEARCH BAR -->
-<div class="search-container">
-    <input type="text" id="searchBox" placeholder="Search videos...">
+<!-- MENU -->
+<div class="menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
 </div>
 
-<!-- REQUEST BUTTON -->
-<div class="request-btn" onclick="openPopup()">Your Request</div>
-
-<!-- POPUP -->
-<div class="popup" id="popupForm">
-    <div class="popup-box">
-        <h3>Submit Your Request</h3>
-        <textarea id="requestText" placeholder="Type your message..."></textarea>
-        <button onclick="submitRequest()">Submit</button>
-        <button onclick="closePopup()" style="background:#555;color:white">Close</button>
-    </div>
+<!-- SEARCH -->
+<div class="search-container">
+    <input type="text" id="searchBox" placeholder="Search videos...">
 </div>
 
 <!-- VIDEO GRID -->
@@ -170,7 +138,7 @@
 <script>
     for (let i = 1; i <= 20; i++) {
         document.write(`
-            <a href="video${i}.html" class="video-card" data-title="Video ${i}">
+            <a href="v/video${i}.html" class="video-card" data-title="Video ${i}">
                 <div class="card">
                     <img src="assets/123.jpg" class="thumb">
                     <div class="card-title">Video ${i}</div>
@@ -181,39 +149,22 @@
 </script>
 </div>
 
-<!-- JS -->
+<!-- FOOTER -->
+<div class="footer">
+    © 2025 Telugubomma Public Evidence Portal • Anonymous • Safe • Secure
+</div>
+
+<!-- SEARCH JS -->
 <script>
-    // SEARCH FUNCTION
-    document.getElementById('searchBox').addEventListener('keyup', function() {
-        let filter = this.value.toLowerCase();
-        let videos = document.querySelectorAll('.video-card');
+document.getElementById('searchBox').addEventListener('keyup', function() {
+    let filter = this.value.toLowerCase();
+    let videos = document.querySelectorAll('.video-card');
 
-        videos.forEach(v => {
-            let title = v.dataset.title.toLowerCase();
-            v.style.display = title.includes(filter) ? "block" : "none";
-        });
+    videos.forEach(v => {
+        let title = v.dataset.title.toLowerCase();
+        v.style.display = title.includes(filter) ? "block" : "none";
     });
-
-    // POPUP CONTROLS
-    function openPopup() {
-        document.getElementById("popupForm").style.display = "flex";
-    }
-    function closePopup() {
-        document.getElementById("popupForm").style.display = "none";
-    }
-
-    // SUBMIT (BACKEND DRAFT)
-    function submitRequest() {
-        let msg = document.getElementById("requestText").value;
-
-        if (!msg.trim()) {
-            alert("Please type something.");
-            return;
-        }
-
-        alert("Your message submitted securely. (Backend coming soon)");
-        closePopup();
-    }
+});
 </script>
 
 </body>
