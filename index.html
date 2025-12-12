@@ -13,6 +13,7 @@
         color: #fff;
     }
 
+    /* HEADER */
     .header {
         text-align: center;
         padding: 25px;
@@ -31,13 +32,79 @@
     .header-tag {
         color: #bbb;
         font-size: 16px;
+        margin-bottom: 15px;
     }
 
-    /* FIXED 4-COLUMN GRID */
+    /* SEARCH BAR */
+    .search-container {
+        text-align: center;
+        margin: 15px;
+    }
+    #searchBox {
+        width: 80%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+    }
+
+    /* REQUEST BUTTON */
+    .request-btn {
+        display: block;
+        margin: 10px auto;
+        background: #00ff00;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        width: 200px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    /* POPUP FORM */
+    .popup {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.8);
+        justify-content: center;
+        align-items: center;
+    }
+    .popup-box {
+        background: #111;
+        padding: 20px;
+        width: 85%;
+        max-width: 400px;
+        border-radius: 10px;
+        border: 2px solid #00ff00;
+    }
+    .popup textarea {
+        width: 100%;
+        height: 120px;
+        padding: 10px;
+        border-radius: 6px;
+        border: none;
+    }
+    .popup button {
+        margin-top: 10px;
+        width: 100%;
+        padding: 10px;
+        background: #00ff00;
+        color: black;
+        font-weight: bold;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* GRID */
     .grid {
         padding: 20px;
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* ← FORCED 4 COLUMNS */
+        grid-template-columns: repeat(4, 1fr);
         gap: 12px;
     }
 
@@ -73,18 +140,37 @@
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
     <div class="header-title">TELUGUBOMMA</div>
     <div class="header-sub">Public Service Portal</div>
     <div class="header-tag">Your happiness is my happiness 😊</div>
 </div>
 
-<div class="grid">
+<!-- SEARCH BAR -->
+<div class="search-container">
+    <input type="text" id="searchBox" placeholder="Search videos...">
+</div>
 
+<!-- REQUEST BUTTON -->
+<div class="request-btn" onclick="openPopup()">Your Request</div>
+
+<!-- POPUP -->
+<div class="popup" id="popupForm">
+    <div class="popup-box">
+        <h3>Submit Your Request</h3>
+        <textarea id="requestText" placeholder="Type your message..."></textarea>
+        <button onclick="submitRequest()">Submit</button>
+        <button onclick="closePopup()" style="background:#555;color:white">Close</button>
+    </div>
+</div>
+
+<!-- VIDEO GRID -->
+<div class="grid" id="videoGrid">
 <script>
     for (let i = 1; i <= 20; i++) {
         document.write(`
-            <a href="video${i}.html">
+            <a href="video${i}.html" class="video-card" data-title="Video ${i}">
                 <div class="card">
                     <img src="assets/123.jpg" class="thumb">
                     <div class="card-title">Video ${i}</div>
@@ -93,8 +179,42 @@
         `);
     }
 </script>
-
 </div>
+
+<!-- JS -->
+<script>
+    // SEARCH FUNCTION
+    document.getElementById('searchBox').addEventListener('keyup', function() {
+        let filter = this.value.toLowerCase();
+        let videos = document.querySelectorAll('.video-card');
+
+        videos.forEach(v => {
+            let title = v.dataset.title.toLowerCase();
+            v.style.display = title.includes(filter) ? "block" : "none";
+        });
+    });
+
+    // POPUP CONTROLS
+    function openPopup() {
+        document.getElementById("popupForm").style.display = "flex";
+    }
+    function closePopup() {
+        document.getElementById("popupForm").style.display = "none";
+    }
+
+    // SUBMIT (BACKEND DRAFT)
+    function submitRequest() {
+        let msg = document.getElementById("requestText").value;
+
+        if (!msg.trim()) {
+            alert("Please type something.");
+            return;
+        }
+
+        alert("Your message submitted securely. (Backend coming soon)");
+        closePopup();
+    }
+</script>
 
 </body>
 </html>
