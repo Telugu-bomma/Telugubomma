@@ -2,50 +2,93 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Public Evidence Portal</title>
+<title>Telugubomma - Public Service Portal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+/* MAIN PAGE STYLE */
 body {
     background: #0d0d0d;
-    color: #fff;
+    color: #f2f2f2;
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
 }
+
+/* HEADER STYLING */
 header {
     text-align: center;
-    padding: 20px;
+    padding: 25px;
     border-bottom: 1px solid #333;
 }
-h1 { margin: 0; font-size: 26px; }
-.subtitle { margin-top: 5px; color: #bbb; }
 
+.main-title {
+    color: #00ff66;  /* Green */
+    background: #000; /* Black background */
+    display: inline-block;
+    padding: 8px 15px;
+    border-bottom: 2px solid white; /* White underline */
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.subtitle1 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.subtitle2 {
+    color: #ffffff;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+/* GRID SYSTEM – COMPACT LAYOUT */
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 10px;
-    padding: 12px;
+    gap: 12px;
+    padding: 15px;
 }
 
+/* CARD STYLE */
 .card {
     background: #1a1a1a;
     padding: 10px;
     border-radius: 10px;
     border: 1px solid #333;
+    transition: 0.2s;
     text-align: center;
 }
 
+.card:hover {
+    background: #222;
+    transform: scale(1.03);
+}
+
+/* THUMBNAIL */
 .thumb {
     width: 100%;
     height: 110px;
     object-fit: cover;
     border-radius: 6px;
+    margin-bottom: 8px;
 }
 
-.card h3 { font-size: 14px; margin: 6px 0; }
-.card p { font-size: 12px; margin: 2px 0; }
+/* TITLE & TEXT */
+.card h3 {
+    font-size: 14px;
+    margin: 6px 0;
+    color: #4da6ff;
+}
 
+.card p {
+    font-size: 12px;
+    margin: 3px 0;
+}
+
+/* BUTTON */
 .btn {
     display: inline-block;
     background: #4da6ff;
@@ -62,12 +105,14 @@ h1 { margin: 0; font-size: 26px; }
 <body>
 
 <header>
-    <h1>Public Evidence Portal</h1>
-    <p class="subtitle">Your happiness is my happiness.</p>
+    <h1 class="main-title">Telugubomma</h1>
+    <p class="subtitle1">Public Service Portal</p>
+    <p class="subtitle2">Your happiness is my happiness ☺️</p>
 </header>
 
 <div class="container">
 
+    <!-- VIDEO 1 -->
     <div class="card">
         <img src="assets/123.jpg" class="thumb">
         <h3>Video 1 (2025)</h3>
@@ -76,6 +121,7 @@ h1 { margin: 0; font-size: 26px; }
         <a class="btn" href="video1.html">Watch Now</a>
     </div>
 
+    <!-- VIDEO 2 -->
     <div class="card">
         <img src="assets/thumb2.jpg" class="thumb">
         <h3>Video 2</h3>
@@ -84,14 +130,16 @@ h1 { margin: 0; font-size: 26px; }
         <a class="btn" href="video2.html">Watch Now</a>
     </div>
 
+    <!-- VIDEO 3 -->
     <div class="card">
         <img src="assets/thumb3.jpg" class="thumb">
         <h3>Video 3</h3>
         <p>Title: AA</p>
         <p>Description: BB</p>
         <a class="btn" href="video3.html">Watch Now</a>
-   </div>
+    </div>
 
+    <!-- VIDEO 4 -->
     <div class="card">
         <img src="assets/thumb4.jpg" class="thumb">
         <h3>Video 4</h3>
@@ -99,7 +147,8 @@ h1 { margin: 0; font-size: 26px; }
         <p>Description: BB</p>
         <a class="btn" href="video4.html">Watch Now</a>
     </div>
-    
+
+    <!-- VIDEO 5 -->
     <div class="card">
         <img src="assets/thumb5.jpg" class="thumb">
         <h3>Video 5</h3>
