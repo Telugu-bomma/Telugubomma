@@ -2,111 +2,106 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma - Public Service Portal</title>
+<title>Telugubomma - Public Evidence Portal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- LEVEL 1 SECURITY TAGS -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="referrer" content="no-referrer">
-
-<!-- FAVICON -->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 
 <style>
     body {
-        background: #000;
-        color: white;
+        margin: 0;
         font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
+        background: #0d0d0d;
+        color: #fff;
     }
 
-    .header-title {
-        background: #000;
-        border: 2px solid white;
-        padding: 10px;
+    /* HEADER BOX */
+    .header {
         text-align: center;
-        margin-bottom: 20px;
-        border-radius: 10px;
+        padding: 25px;
+        border-bottom: 2px solid #333;
+        background: #000;
     }
-
-    .header-title h1 {
+    .header-title {
         color: #00ff00;
-        margin: 0;
-        font-size: 28px;
+        font-size: 32px;
+        font-weight: bold;
     }
-
-    .header-title h2 {
-        color: white;
-        margin: 5px 0 0 0;
-        font-size: 18px;
-    }
-
-    .header-title p {
+    .header-sub {
         color: #ccc;
-        font-size: 14px;
+        font-size: 18px;
+        margin-top: 5px;
+    }
+    .header-tag {
+        color: #bbb;
+        font-size: 16px;
         margin-top: 5px;
     }
 
-    .video-grid {
+    /* VIDEO GRID */
+    .grid {
+        padding: 20px;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
         gap: 15px;
     }
 
-    .video-card {
+    .card {
         background: #111;
-        padding: 10px;
+        border: 1px solid #222;
         border-radius: 10px;
-        border: 1px solid #444;
+        overflow: hidden;
         text-align: center;
+        transition: 0.25s;
+    }
+    .card:hover {
+        transform: scale(1.05);
+        border-color: #00ff00;
     }
 
-    .video-thumb {
+    .thumb {
         width: 100%;
-        border-radius: 8px;
+        height: 110px;
+        object-fit: cover;
+        border-bottom: 1px solid #222;
     }
 
-    .video-title {
-        margin-top: 10px;
-        font-size: 14px;
-        color: #0f0;
+    .card-title {
+        padding: 10px;
+        font-size: 15px;
+        font-weight: bold;
+        color: #00ff00;
+    }
+
+    a {
+        text-decoration: none;
     }
 </style>
-
 </head>
+
 <body>
 
-<div class="header-title">
-    <h1>Telugubomma</h1>
-    <h2>Public Service Portal</h2>
-    <p>Your happiness is my happiness ☺️</p>
+<!-- HEADER SECTION -->
+<div class="header">
+    <div class="header-title">TELUGUBOMMA</div>
+    <div class="header-sub">Public Service Portal</div>
+    <div class="header-tag">Your happiness is my happiness 😊</div>
 </div>
 
-<h2>All Videos</h2>
+<!-- VIDEO GRID SECTION -->
+<div class="grid">
 
-<div class="video-grid">
-
-    <div class="video-card">
-        <a href="video1.html">
-            <img src="assets/123.jpg" class="video-thumb">
-            <div class="video-title">Video 1</div>
-        </a>
-    </div>
-
-    <div class="video-card">
-        <a href="video2.html">
-            <img src="assets/123.jpg" class="video-thumb">
-            <div class="video-title">Video 2</div>
-        </a>
-    </div>
-
-    <div class="video-card">
-        <a href="video3.html">
-            <img src="assets/123.jpg" class="video-thumb">
-            <div class="video-title">Video 3</div>
-        </a>
-    </div>
+<script>
+    // Generate 20 video cards
+    for (let i = 1; i <= 20; i++) {
+        document.write(`
+            <a href="video${i}.html">
+                <div class="card">
+                    <img src="assets/123.jpg" class="thumb" alt="Video Thumbnail">
+                    <div class="card-title">Video ${i}</div>
+                </div>
+            </a>
+        `);
+    }
+</script>
 
 </div>
 
