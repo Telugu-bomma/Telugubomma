@@ -1,33 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Public Evidence Portal</title>
-  <meta charset="UTF-8">
-  <style>
-    body { font-family: Arial; margin: 20px; }
-    nav a { margin-right: 15px; text-decoration: none; font-weight: bold; }
-  </style>
-</head>
+            <a href="video${i}.html" class="video-card" data-title="Video ${i}">
+                <div class="card">
+                    <img src="assets/123.jpg" class="thumb">
+                    <div class="card-title">Video ${i}</div>
+                </div>
+            </a>
+        `);
+    }
+</script>
+</div>
 
-<body>
-  <h1>Public Evidence Portal</h1>
-  <p>Your happiness is my happiness.</p>
+<!-- FOOTER -->
+<div class="footer">
+    © 2025 Telugubomma Public Service Portal • Anonymous • Safe • Secure
+</div>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="upload.html">Submit request</a>
-    <a href="videos.html">Videos</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<!-- SEARCH JS -->
+<script>
+document.getElementById('searchBox').addEventListener('keyup', function() {
+    let filter = this.value.toLowerCase();
+    let videos = document.querySelectorAll('.video-card');
 
-  <h2>About This Portal</h2>
-  <p>We are again to curuption.</p>
+    videos.forEach(v => {
+        let title = v.dataset.title.toLowerCase();
+        v.style.display = title.includes(filter) ? "block" : "none";
+    });
+});
+</script>
 
-  <h2>How it Works</h2>
-  <ol>
-    <li>collect the video safely using our guidelines.</li>
-    <li>Upload video to our secure pipeline.</li>
-    <li>Submit the link anonymously on the Submit Evidence page.</li>
-  </ol>
 </body>
 </html>
