@@ -11,103 +11,114 @@ body {
   background: #000;
   color: #fff;
   font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+.header {
   text-align: center;
+  padding: 15px;
+  border-bottom: 1px solid #222;
+}
+.header h1 {
+  color: #00ff00;
+  margin: 0;
+}
+.header p {
+  color: #aaa;
+  font-size: 14px;
 }
 
-.container {
-  padding: 20px;
-}
-
-/* THUMBNAIL BOX */
-.thumb-box {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.thumb-box img {
-  width: 100%;
-  border-radius: 12px;
-}
-
-/* WATCH BUTTON */
-.watch-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 14px 34px;
-  font-size: 18px;
-  border: none;
-  border-radius: 10px;
-  background: rgba(0, 255, 0, 0.9);
-  color: #000;
-  cursor: pointer;
-}
-.watch-btn:hover {
-  background: #22ff22;
+/* VIDEO BOX */
+.video-box {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 10px;
 }
 
 /* VIDEO */
 video {
   width: 100%;
-  max-width: 800px;
-  display: none;
-  margin-top: 20px;
+  border-radius: 10px;
+  background: #000;
 }
 
-/* BACK BUTTON */
-.back-btn {
-  margin-top: 25px;
-  padding: 10px 24px;
+/* BUTTONS */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
   font-size: 15px;
-  border-radius: 8px;
-  border: 1px solid #333;
-  background: #111;
-  color: #00ff00;
   cursor: pointer;
 }
+
+.back-btn {
+  background: #444;
+  color: #fff;
+}
+
 .back-btn:hover {
-  background: #1a1a1a;
+  background: #666;
+}
+
+.watch-btn {
+  background: #00ff00;
+  color: #000;
+}
+
+.watch-btn:hover {
+  background: #22ff22;
+}
+
+/* Disable selection */
+* {
+  user-select: none;
+  -webkit-user-select: none;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h2>Video 1</h2>
-
-  <!-- THUMBNAIL -->
-  <div class="thumb-box" id="thumbBox">
-    <img src="assets/123.jpg" alt="Video Thumbnail">
-    <button class="watch-btn" id="watchBtn">▶ Watch Video</button>
-  </div>
-
-  <!-- VIDEO PLAYER -->
-  <video id="player" controls>
-    <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/1.mp4" type="video/mp4">
-  </video>
-
-  <!-- BACK -->
-  <button class="back-btn" onclick="location.href='home.html'">⬅ Back</button>
+<!-- HEADER -->
+<div class="header">
+  <h1>TELUGUBOMMA</h1>
+  <p>Safe • Anonymous • Secure</p>
 </div>
 
-<script>
-/* OPEN NEW TAB IMMEDIATELY */
-window.open("https://www.youtube.com", "_blank");
+<!-- VIDEO -->
+<div class="video-box">
 
-/* PLAY ONLY AFTER CLICK */
-document.getElementById("watchBtn").onclick = function () {
-  document.getElementById("thumbBox").style.display = "none";
-  const video = document.getElementById("player");
-  video.style.display = "block";
-  video.play();
-};
+  <!-- VIDEO PLAYER -->
+  <video id="player" controls controlsList="nodownload noplaybackrate">
+    <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/1.pm4" type="video/mp4">
+    Your browser does not support video playback.
+  </video>
+
+  <!-- BUTTONS -->
+  <div class="controls">
+    <button class="back-btn" onclick="location.href='index.html'">⬅ Back</button>
+    <button class="watch-btn" onclick="openDecoy()">Open Info</button>
+  </div>
+
+</div>
+
+<!-- JS -->
 <script>
+/* Disable right click */
 document.addEventListener("contextmenu", function(e) {
   e.preventDefault();
 });
+
+/* Open decoy site in new tab */
+function openDecoy() {
+  window.open("https://www.youtube.com", "_blank");
+}
 </script>
 
 </body>
