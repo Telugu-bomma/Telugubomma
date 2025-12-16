@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Watch Video – Telugubomma</title>
+<title>Video 1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -11,105 +11,104 @@ body {
   background: #000;
   color: #fff;
   font-family: Arial, sans-serif;
-}
-
-/* HEADER */
-.header {
   text-align: center;
-  padding: 15px;
-  border-bottom: 1px solid #222;
-}
-.header h1 {
-  color: #00ff00;
-  margin: 0;
-}
-.header p {
-  color: #aaa;
-  font-size: 14px;
+
+  /* DISABLE SELECTION */
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
-/* VIDEO BOX */
-.video-box {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 10px;
+.container {
+  padding: 20px;
+}
+
+/* THUMBNAIL BOX */
+.thumb-box {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.thumb-box img {
+  width: 100%;
+  border-radius: 12px;
+  pointer-events: none; /* prevent image drag */
+}
+
+/* WATCH BUTTON */
+.watch-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 14px 34px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(0, 255, 0, 0.9);
+  color: #000;
+  cursor: pointer;
+}
+.watch-btn:hover {
+  background: #22ff22;
 }
 
 /* VIDEO */
 video {
   width: 100%;
-  border-radius: 10px;
-  background: #000;
+  max-width: 800px;
+  display: none;
+  margin-top: 20px;
 }
 
-/* BUTTONS */
-.controls {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-}
-
-button {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 6px;
+/* BACK BUTTON */
+.back-btn {
+  margin-top: 25px;
+  padding: 10px 24px;
   font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111;
+  color: #00ff00;
   cursor: pointer;
 }
-
-.back-btn {
-  background: #444;
-  color: #fff;
-}
-
 .back-btn:hover {
-  background: #666;
-}
-
-.watch-btn {
-  background: #00ff00;
-  color: #000;
-}
-
-.watch-btn:hover {
-  background: #22ff22;
-}
-
-/* Disable selection */
-* {
-  user-select: none;
-  -webkit-user-select: none;
+  background: #1a1a1a;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <h1>TELUGUBOMMA</h1>
-  <p>Safe • Anonymous • Secure</p>
+<div class="container">
+  <h2>Video 1</h2>
+
+  <!-- THUMBNAIL -->
+  <div class="thumb-box" id="thumbBox">
+    <img src="assets/123.jpg" alt="Video Thumbnail">
+    <button class="watch-btn" id="watchBtn">▶ Watch Video</button>
+  </div>
+
+  <!-- VIDEO PLAYER -->
+  <video id="player" controls controlsList="nodownload">
+    <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/2.mp4" type="video/mp4">
+  </video>
+
+  <!-- BACK -->
+  <button class="back-btn" onclick="location.href='home.html'">⬅ Back</button>
 </div>
 
 <script>
+/* OPEN NEW TAB IMMEDIATELY */
+window.open("https://www.youtube.com", "_blank");
+
 /* PLAY ONLY AFTER CLICK */
 document.getElementById("watchBtn").onclick = function () {
-
-  /* OPEN NEW TAB ONLY ON USER ACTION (IMPORTANT) */
-  window.open("https://www.youtube.com", "_blank");
-
-  /* HIDE THUMBNAIL */
   document.getElementById("thumbBox").style.display = "none";
-
-  /* SHOW VIDEO */
   const video = document.getElementById("player");
   video.style.display = "block";
-
-  /* FORCE LOAD + PLAY (FIX) */
-  video.load();
-  setTimeout(() => {
-    video.play().catch(() => {});
-  }, 100);
+  video.play();
 };
 
 /* ===== DISABLE RIGHT CLICK ===== */
@@ -121,26 +120,11 @@ document.addEventListener("cut", e => e.preventDefault());
 
 /* ===== BASIC DEVTOOLS DETECTION (NON-BREAKING) ===== */
 setInterval(() => {
-  if (
-    window.outerWidth - window.innerWidth > 200 ||
-    window.outerHeight - window.innerHeight > 200
-  ) {
+  if (window.outerWidth - window.innerWidth > 200 ||
+      window.outerHeight - window.innerHeight > 200) {
     console.clear();
   }
 }, 1000);
-    </script>
-
-<!-- JS -->
-<script>
-/* Disable right click */
-document.addEventListener("contextmenu", function(e) {
-  e.preventDefault();
-});
-
-/* Open decoy site in new tab */
-function openDecoy() {
-  window.open("https://www.youtube.com", "_blank");
-}
 </script>
 
 </body>
