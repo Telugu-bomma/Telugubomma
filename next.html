@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Next Page</title>
+<title>Telugubomma – Download</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -14,45 +14,104 @@ body {
   text-align: center;
 }
 
-.container {
+/* HEADER */
+.header {
   padding: 20px;
+  border-bottom: 1px solid #222;
+}
+.header h1 {
+  color: #00ff00;
+  margin: 0;
+  font-size: 30px;
+}
+.header p {
+  color: #aaa;
+  margin-top: 6px;
+  font-size: 14px;
 }
 
+/* CONTAINER */
+.container {
+  padding: 25px;
+}
+
+/* CARD */
 .card {
-  max-width: 320px;
+  position: relative;
+  max-width: 360px;
   margin: 30px auto;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   border: 1px solid #222;
   transition: 0.3s;
 }
-
 .card:hover {
   transform: scale(1.05);
   border-color: #00ff00;
 }
 
+/* IMAGE */
 .card img {
   width: 100%;
   display: block;
+}
+
+/* DOWNLOAD BUTTON */
+.download-btn {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 26px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(0, 255, 0, 0.95);
+  color: #000;
+  cursor: pointer;
+}
+.download-btn:hover {
+  background: #22ff22;
+}
+
+/* BACK */
+.back-btn {
+  margin-top: 25px;
+  padding: 10px 22px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111;
+  color: #00ff00;
+  cursor: pointer;
+}
+.back-btn:hover {
+  background: #1a1a1a;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h2>Download Page</h2>
+<!-- HEADER -->
+<div class="header">
+  <h1>TELUGUBOMMA</h1>
+  <p>Your happiness is our happiness 😊</p>
+</div>
 
-  <!-- CLICK IMAGE → REDIRECT -->
+<div class="container">
+
+  <!-- CLICK IMAGE OR BUTTON → REDIRECT -->
   <a href="https://download.moviespage.site/download/page/94335">
     <div class="card">
       <img src="assets/123.jpg" alt="Download">
+      <button class="download-btn">⬇ Download</button>
     </div>
   </a>
 
-  <br>
-  <button onclick="history.back()">⬅ Back</button>
+  <!-- BACK -->
+  <button class="back-btn" onclick="history.back()">⬅ Back</button>
+
 </div>
 
 </body>
