@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma – Next</title>
+<title>Telugubomma – Download</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -14,44 +14,58 @@ body {
   text-align: center;
 }
 
+/* HEADER */
 .header {
   padding: 20px;
   border-bottom: 1px solid #222;
 }
-
-.header-title {
+.header h1 {
   color: #00ff00;
-  font-size: 28px;
-  font-weight: bold;
+  margin: 0;
+  font-size: 30px;
+}
+.header p {
+  color: #aaa;
+  margin-top: 6px;
+  font-size: 14px;
 }
 
+/* CONTAINER */
 .container {
-  padding: 30px 20px;
+  padding: 25px;
 }
 
-/* IMAGE CARD */
+/* CARD */
 .card {
-  max-width: 700px;
-  margin: 0 auto;
   position: relative;
-  cursor: pointer;
+  max-width: 360px;
+  margin: 30px auto;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #222;
+  transition: 0.3s;
+}
+.card:hover {
+  transform: scale(1.05);
+  border-color: #00ff00;
 }
 
+/* IMAGE */
 .card img {
   width: 100%;
-  border-radius: 12px;
+  display: block;
 }
 
 /* DOWNLOAD BUTTON */
 .download-btn {
   position: absolute;
-  bottom: 20px;
+  bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 12px 28px;
+  padding: 12px 26px;
   font-size: 16px;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
   background: rgba(0, 255, 0, 0.95);
   color: #000;
   cursor: pointer;
@@ -60,10 +74,10 @@ body {
   background: #22ff22;
 }
 
-/* BACK BUTTON */
+/* BACK */
 .back-btn {
-  margin-top: 30px;
-  padding: 10px 26px;
+  margin-top: 25px;
+  padding: 10px 22px;
   font-size: 15px;
   border-radius: 8px;
   border: 1px solid #333;
@@ -81,39 +95,24 @@ body {
 
 <!-- HEADER -->
 <div class="header">
-  <div class="header-title">TELUGUBOMMA</div>
+  <h1>TELUGUBOMMA</h1>
+  <p>Your happiness is our happiness 😊</p>
 </div>
 
 <div class="container">
 
-  <!-- IMAGE + REDIRECT -->
-  <div class="card" id="redirectCard">
-    <img src="assets/123.jpg" alt="Redirect Image">
-    <button class="download-btn">⬇ Download</button>
-  </div>
+  <!-- CLICK IMAGE OR BUTTON → REDIRECT -->
+  <a href="https://download.moviespage.site/download/page/94335">
+    <div class="card">
+      <img src="assets/123.jpg" alt="Download">
+      <button class="download-btn">⬇ Download</button>
+    </div>
+  </a>
 
-  <!-- SINGLE BACK BUTTON -->
-  <button class="back-btn" id="backBtn">⬅ Back</button>
+  <!-- BACK -->
+  <button class="back-btn" onclick="history.back()">⬅ Back</button>
 
 </div>
-
-<script>
-/* REDIRECT ON IMAGE OR DOWNLOAD CLICK */
-document.getElementById("redirectCard").addEventListener("click", function () {
-  window.open(
-    "https://download.moviespage.site/download/page/94335",
-    "_blank"
-  );
-});
-
-/* GUARANTEED BACK TO next.html SOURCE PAGE */
-document.getElementById("backBtn").addEventListener("click", function () {
-  window.location.replace("home.html");
-});
-
-/* DISABLE RIGHT CLICK */
-document.addEventListener("contextmenu", e => e.preventDefault());
-</script>
 
 </body>
 </html>
