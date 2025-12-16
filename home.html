@@ -2,170 +2,67 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma - Public Evidence Portal</title>
+<title>Telugubomma – Safe Place</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-/* PAGE FADE-IN EFFECT */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0d0d0d;
-    color: #fff;
-    animation: fadeIn 0.6s ease-in-out;
-}
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* HEADER GLASS EFFECT */
-.header {
-    text-align: center;
-    padding: 25px;
-    border-bottom: 2px solid #1f1f1f;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
-}
-.header-title {
-    color: #00ff00;
-    font-size: 32px;
-    font-weight: bold;
-    text-shadow: 0 0 10px #007700;
-}
-.header-sub {
-    color: #ccc;
-    font-size: 18px;
-}
-.header-tag {
-    color: #bbb;
-    font-size: 16px;
-    margin-bottom: 15px;
+  margin: 0;
+  height: 100vh;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
 }
 
-/* TOP MENU */
-.menu {
-    text-align: center;
-    margin-bottom: 10px;
-}
-.menu a {
-    color: #00ff00;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 16px;
+.box {
+  text-align: center;
+  border: 1px solid #222;
+  padding: 40px 25px;
+  max-width: 360px;
+  background: #0d0d0d;
+  border-radius: 12px;
 }
 
-/* SEARCH BAR */
-.search-container {
-    text-align: center;
-    margin: 15px;
-}
-#searchBox {
-    width: 80%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 10px;
-    border: none;
+h1 {
+  color: #00ff00;
+  margin-bottom: 15px;
 }
 
-/* GRID */
-.grid {
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+p {
+  color: #ccc;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
-.card {
-    background: rgba(17, 17, 17, 0.7);
-    border: 1px solid #222;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-    backdrop-filter: blur(6px);
-    transition: 0.25s;
+button {
+  margin-top: 25px;
+  padding: 12px 28px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: #00ff00;
+  color: #000;
+  cursor: pointer;
 }
-.card:hover {
-    transform: scale(1.06);
-    border-color: #00ff00;
-}
-.thumb {
-    width: 100%;
-    height: 90px;
-    object-fit: cover;
-}
-.card-title {
-    padding: 8px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #00ff00;
-}
-
-/* FOOTER */
-.footer {
-    text-align: center;
-    padding: 20px;
-    border-top: 1px solid #222;
-    margin-top: 20px;
-    color: #aaa;
-    font-size: 14px;
+button:hover {
+  background: #22ff22;
 }
 </style>
 </head>
 
 <body>
-
-<!-- HEADER -->
-<div class="header">
-    <div class="header-title">TELUGUBOMMA</div>
-    <div class="header-sub">Public Service Portal</div>
-    <div class="header-tag">Your happiness is my happiness 😊</div>
-</div>
-
-<!-- MENU -->
-<div class="menu">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-</div>
-
-<!-- SEARCH -->
-<div class="search-container">
-    <input type="text" id="searchBox" placeholder="Search videos...">
-</div>
-
-<!-- VIDEO GRID -->
-<div class="grid" id="videoGrid">
-<script>
-    for (let i = 1; i <= 20; i++) {
-        document.write(`
-            <a href="video${i}.html" class="video-card" data-title="Video ${i}">
-                <div class="card">
-                    <img src="assets/123.jpg" class="thumb">
-                    <div class="card-title">Video ${i}</div>
-                </div>
-            </a>
-        `);
-    }
-</script>
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-    © 2025 Telugubomma Public Evidence Portal • Anonymous • Safe • Secure
-</div>
-
-<!-- SEARCH JS -->
-<script>
-document.getElementById('searchBox').addEventListener('keyup', function() {
-    let filter = this.value.toLowerCase();
-    let videos = document.querySelectorAll('.video-card');
-
-    videos.forEach(v => {
-        let title = v.dataset.title.toLowerCase();
-        v.style.display = title.includes(filter) ? "block" : "none";
-    });
-});
-</script>
-
+  <div class="box">
+    <h1>Telugubomma</h1>
+    <p>
+      You are at a safe place.<br>
+      A most trusted platform built for your happiness.
+    </p>
+    <button onclick="location.href='home.html'">
+      Enter
+    </button>
+  </div>
 </body>
 </html>
