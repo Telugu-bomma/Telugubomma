@@ -2,104 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma – More Videos</title>
+<title>Telugubomma – Music</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0d0d0d;
-    color: #fff;
-    animation: fadeIn 0.6s ease-in-out;
+  margin: 0;
+  background: #0d0d0d;
+  color: #fff;
+  font-family: Arial, sans-serif;
 }
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* HEADER */
 .header {
-    text-align: center;
-    padding: 25px;
-    border-bottom: 2px solid #1f1f1f;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
+  text-align: center;
+  padding: 20px;
+  color: #00ff00;
 }
-.header-title {
-    color: #00ff00;
-    font-size: 32px;
-    font-weight: bold;
-}
-.header-sub {
-    color: #ccc;
-    font-size: 18px;
-}
-
-/* MENU */
-.menu {
-    text-align: center;
-    margin-bottom: 10px;
-}
-.menu a {
-    color: #00ff00;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 16px;
-}
-
-/* SEARCH */
-.search-container {
-    text-align: center;
-    margin: 15px;
-}
-#searchBox {
-    width: 80%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 10px;
-    border: none;
-}
-
-/* GRID */
 .grid {
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 20px;
 }
 .card {
-    background: rgba(17,17,17,0.7);
-    border: 1px solid #222;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-    transition: 0.25s;
+  background: #111;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
 }
 .card:hover {
-    transform: scale(1.06);
-    border-color: #00ff00;
+  border: 1px solid #00ff00;
 }
-.thumb {
-    width: 100%;
-    height: 90px;
-    object-fit: cover;
+.back {
+  text-align: center;
+  margin: 20px;
 }
-.card-title {
-    padding: 8px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #00ff00;
-}
-
-/* FOOTER */
-.footer {
-    text-align: center;
-    padding: 20px;
-    border-top: 1px solid #222;
-    margin-top: 20px;
-    color: #aaa;
-    font-size: 14px;
+.back button {
+  padding: 10px 20px;
+  background: #111;
+  color: #00ff00;
+  border: 1px solid #333;
+  cursor: pointer;
 }
 </style>
 </head>
@@ -107,47 +50,23 @@ body {
 <body>
 
 <div class="header">
-    <div class="header-title">TELUGUBOMMA</div>
-    <div class="header-sub">More Videos</div>
+  <h2>🎵 Free Music (Pixabay)</h2>
 </div>
 
-<!-- MENU (BACK ONLY) -->
-<div class="menu">
-    <a href="home.html">⬅ Back</a>
+<div class="grid">
+  <div class="card" onclick="openAudio(1)">Music 1</div>
+  <div class="card" onclick="openAudio(2)">Music 2</div>
+  <div class="card" onclick="openAudio(3)">Music 3</div>
 </div>
 
-<!-- SEARCH -->
-<div class="search-container">
-    <input type="text" id="searchBox" placeholder="Search videos...">
-</div>
-
-<!-- VIDEO GRID (SECOND SET) -->
-<div class="grid" id="videoGrid">
-<script>
-    for (let i = 21; i <= 40; i++) {
-        document.write(`
-            <a href="video${i}.html" class="video-card" data-title="Video ${i}">
-                <div class="card">
-                    <img src="assets/123.jpg" class="thumb">
-                    <div class="card-title">Video ${i}</div>
-                </div>
-            </a>
-        `);
-    }
-</script>
-</div>
-
-<div class="footer">
-    © 2025 Telugubomma • Page 2
+<div class="back">
+  <button onclick="history.back()">⬅ Back</button>
 </div>
 
 <script>
-document.getElementById('searchBox').addEventListener('keyup', function() {
-    let filter = this.value.toLowerCase();
-    document.querySelectorAll('.video-card').forEach(v => {
-        v.style.display = v.dataset.title.toLowerCase().includes(filter) ? "block" : "none";
-    });
-});
+function openAudio(id) {
+  window.location.href = "nextvideo.html?id=" + id;
+}
 </script>
 
 </body>
