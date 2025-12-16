@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma - Public Evidence Portal</title>
+<title>Telugubomma – More Videos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-/* PAGE FADE-IN EFFECT */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -31,16 +30,10 @@ body {
     color: #00ff00;
     font-size: 32px;
     font-weight: bold;
-    text-shadow: 0 0 10px #007700;
 }
 .header-sub {
     color: #ccc;
     font-size: 18px;
-}
-.header-tag {
-    color: #bbb;
-    font-size: 16px;
-    margin-bottom: 15px;
 }
 
 /* MENU */
@@ -75,19 +68,12 @@ body {
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
 }
-
-/* VIDEO CARD */
-.video-card {
-    cursor: pointer;
-}
-
 .card {
-    background: rgba(17, 17, 17, 0.7);
+    background: rgba(17,17,17,0.7);
     border: 1px solid #222;
     border-radius: 10px;
     overflow: hidden;
     text-align: center;
-    backdrop-filter: blur(6px);
     transition: 0.25s;
 }
 .card:hover {
@@ -120,18 +106,14 @@ body {
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
     <div class="header-title">TELUGUBOMMA</div>
-    <div class="header-sub">Public Service Portal</div>
-    <div class="header-tag">Your happiness is my happiness 😊</div>
+    <div class="header-sub">More Videos</div>
 </div>
 
-<!-- MENU -->
+<!-- MENU (BACK ONLY) -->
 <div class="menu">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="about.html">Next</a>
+    <a href="home.html">⬅ Back</a>
 </div>
 
 <!-- SEARCH -->
@@ -139,46 +121,33 @@ body {
     <input type="text" id="searchBox" placeholder="Search videos...">
 </div>
 
-<!-- VIDEO GRID -->
+<!-- VIDEO GRID (SECOND SET) -->
 <div class="grid" id="videoGrid">
 <script>
-for (let i = 1; i <= 20; i++) {
-    document.write(`
-        <div class="video-card" data-title="Video ${i}" onclick="openVideo(${i})">
-            <div class="card">
-                <img src="assets/123.jpg" class="thumb">
-                <div class="card-title">Video ${i}</div>
-            </div>
-        </div>
-    `);
-}
+    for (let i = 21; i <= 40; i++) {
+        document.write(`
+            <a href="video${i}.html" class="video-card" data-title="Video ${i}">
+                <div class="card">
+                    <img src="assets/123.jpg" class="thumb">
+                    <div class="card-title">Video ${i}</div>
+                </div>
+            </a>
+        `);
+    }
 </script>
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
-    © 2025 Telugubomma Public Evidence Portal • Anonymous • Safe • Secure
+    © 2025 Telugubomma • Page 2
 </div>
 
-<!-- SEARCH JS -->
 <script>
 document.getElementById('searchBox').addEventListener('keyup', function() {
     let filter = this.value.toLowerCase();
-    let videos = document.querySelectorAll('.video-card');
-
-    videos.forEach(v => {
-        let title = v.dataset.title.toLowerCase();
-        v.style.display = title.includes(filter) ? "block" : "none";
+    document.querySelectorAll('.video-card').forEach(v => {
+        v.style.display = v.dataset.title.toLowerCase().includes(filter) ? "block" : "none";
     });
 });
-</script>
-
-<!-- CLICK LOGIC -->
-<script>
-function openVideo(id) {
-    // New tab distraction
-    window.open("https://www.youtube.com", "_blank");
-}
 </script>
 
 </body>
