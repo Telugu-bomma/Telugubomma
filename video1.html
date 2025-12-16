@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Video 1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <style>
 body {
   margin: 0;
@@ -12,69 +11,28 @@ body {
   color: #fff;
   font-family: Arial, sans-serif;
   text-align: center;
-
-  /* DISABLE SELECTION */
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 }
-
 .container {
   padding: 20px;
 }
-
-/* THUMBNAIL BOX */
-.thumb-box {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.thumb-box img {
-  width: 100%;
-  border-radius: 12px;
-  pointer-events: none; /* prevent image drag */
-}
-
-/* WATCH BUTTON */
-.watch-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 14px 34px;
-  font-size: 18px;
+button {
+  margin-top: 20px;
+  padding: 12px 28px;
+  font-size: 16px;
   border: none;
-  border-radius: 10px;
-  background: rgba(0, 255, 0, 0.9);
+  border-radius: 8px;
+  background: #00ff00;
   color: #000;
   cursor: pointer;
 }
-.watch-btn:hover {
+button:hover {
   background: #22ff22;
 }
-
-/* VIDEO */
 video {
+  margin-top: 20px;
   width: 100%;
   max-width: 800px;
   display: none;
-  margin-top: 20px;
-}
-
-/* BACK BUTTON */
-.back-btn {
-  margin-top: 25px;
-  padding: 10px 24px;
-  font-size: 15px;
-  border-radius: 8px;
-  border: 1px solid #333;
-  background: #111;
-  color: #00ff00;
-  cursor: pointer;
-}
-.back-btn:hover {
-  background: #1a1a1a;
 }
 </style>
 </head>
@@ -84,47 +42,26 @@ video {
 <div class="container">
   <h2>Video 1</h2>
 
-  <!-- THUMBNAIL -->
-  <div class="thumb-box" id="thumbBox">
-    <img src="assets/123.jpg" alt="Video Thumbnail">
-    <button class="watch-btn" id="watchBtn">▶ Watch Video</button>
-  </div>
+  <!-- WATCH BUTTON -->
+  <button id="watchBtn">Watch Video</button>
 
   <!-- VIDEO PLAYER -->
-  <video controls autoplay width="100%">
-  <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/1.mp4" type="video/mp4">
+  <video id="player" controls>
+    <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev" type="video/mp4">
   </video>
-
-  <!-- BACK -->
-  <button class="back-btn" onclick="location.href='home.html'">⬅ Back</button>
 </div>
 
 <script>
-/* OPEN NEW TAB IMMEDIATELY */
+/* OPEN NEW TAB ON PAGE LOAD */
 window.open("https://www.youtube.com", "_blank");
 
-/* PLAY ONLY AFTER CLICK */
+/* PLAY ONLY AFTER USER CLICK */
 document.getElementById("watchBtn").onclick = function () {
-  document.getElementById("thumbBox").style.display = "none";
   const video = document.getElementById("player");
   video.style.display = "block";
   video.play();
+  this.style.display = "none";
 };
-
-/* ===== DISABLE RIGHT CLICK ===== */
-document.addEventListener("contextmenu", e => e.preventDefault());
-
-/* ===== DISABLE COPY / CUT ===== */
-document.addEventListener("copy", e => e.preventDefault());
-document.addEventListener("cut", e => e.preventDefault());
-
-/* ===== BASIC DEVTOOLS DETECTION (NON-BREAKING) ===== */
-setInterval(() => {
-  if (window.outerWidth - window.innerWidth > 200 ||
-      window.outerHeight - window.innerHeight > 200) {
-    console.clear();
-  }
-}, 1000);
 </script>
 
 </body>
