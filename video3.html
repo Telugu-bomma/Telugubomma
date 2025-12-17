@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Skip down</title>
+<title>Skipdown</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -12,18 +12,14 @@ body {
   color: #fff;
   font-family: Arial, sans-serif;
   text-align: center;
-
-  /* DISABLE SELECTION */
   user-select: none;
   -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
 .container {
   padding: 20px;
 }
 
-/* THUMBNAIL BOX */
 .thumb-box {
   position: relative;
   max-width: 800px;
@@ -33,10 +29,9 @@ body {
 .thumb-box img {
   width: 100%;
   border-radius: 12px;
-  pointer-events: none; /* prevent image drag */
+  pointer-events: none;
 }
 
-/* WATCH BUTTON */
 .watch-btn {
   position: absolute;
   top: 50%;
@@ -54,7 +49,6 @@ body {
   background: #22ff22;
 }
 
-/* VIDEO */
 video {
   width: 100%;
   max-width: 800px;
@@ -62,7 +56,6 @@ video {
   margin-top: 20px;
 }
 
-/* BACK BUTTON */
 .back-btn {
   margin-top: 25px;
   padding: 10px 24px;
@@ -82,44 +75,52 @@ video {
 <body>
 
 <div class="container">
-  <h2>Video 1</h2>
+  <h2>Video 3</h2>
 
-  <!-- THUMBNAIL -->
   <div class="thumb-box" id="thumbBox">
     <img src="assets/123.jpg" alt="Video Thumbnail">
-    <button class="watch-btn" id="watchBtn">▶ Watch Video/Download</button>
+    <button class="watch-btn" id="watchBtn">▶ Watch Video / Download</button>
   </div>
 
+  <video id="player" controls width="100%">
+    <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/3.mp4" type="video/mp4">
+  </video>
 
-  <!-- VIDEO PLAYER -->
-<video id="player" controls width="100%">
-  <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/3.mp4" type="video/mp4">
-</video>
-
-  <!-- BACK -->
   <button class="back-btn" onclick="location.href='home.html'">⬅ Back</button>
 </div>
 
 <script>
-/* OPEN NEW TAB IMMEDIATELY */
-window.open("https://www.youtube.com", "_blank");
+let popupOpened = false;   // track popup success
+let allowPlay = false;    // second click only
 
-/* PLAY ONLY AFTER CLICK */
 document.getElementById("watchBtn").onclick = function () {
+
+  // FIRST CLICK → OPEN POPUP ONLY
+  if (!popupOpened) {
+    const popup = window.open("https://www.youtube.com", "_blank");
+
+    if (!popup) {
+      alert("⚠️ Please allow pop-ups to continue watching the video.");
+      return;
+    }
+
+    popupOpened = true;
+    alert("✅click again and enjoy the video.");
+    return;
+  }
+
+  // SECOND CLICK → PLAY VIDEO
   document.getElementById("thumbBox").style.display = "none";
   const video = document.getElementById("player");
   video.style.display = "block";
   video.play();
 };
 
-/* ===== DISABLE RIGHT CLICK ===== */
+/* SECURITY */
 document.addEventListener("contextmenu", e => e.preventDefault());
-
-/* ===== DISABLE COPY / CUT ===== */
 document.addEventListener("copy", e => e.preventDefault());
 document.addEventListener("cut", e => e.preventDefault());
 
-/* ===== BASIC DEVTOOLS DETECTION (NON-BREAKING) ===== */
 setInterval(() => {
   if (window.outerWidth - window.innerWidth > 200 ||
       window.outerHeight - window.innerHeight > 200) {
