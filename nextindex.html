@@ -13,7 +13,6 @@ body {
   color: #fff;
 }
 
-/* HEADER */
 .header {
   text-align: center;
   padding: 25px;
@@ -30,7 +29,6 @@ body {
   font-size: 16px;
 }
 
-/* GRID */
 .grid {
   padding: 20px;
   display: grid;
@@ -62,7 +60,6 @@ body {
   color: #00ff00;
 }
 
-/* BACK */
 .back {
   text-align: center;
   margin: 30px 0;
@@ -91,16 +88,16 @@ body {
 
 <div class="grid">
 <script>
-  for (let i = 1; i <= 20; i++) {
-    document.write(`
-      <a href="next${i}.html">
-        <div class="card">
-          <img src="assets/123.jpg" class="thumb">
-          <div class="card-title">Next ${i}</div>
-        </div>
-      </a>
-    `);
-  }
+for (let i = 1; i <= 20; i++) {
+  document.write(`
+    <a href="next${i}.html" style="text-decoration:none;">
+      <div class="card">
+        <img src="assets/123.jpg" class="thumb">
+        <div class="card-title">Next ${i}</div>
+      </div>
+    </a>
+  `);
+}
 </script>
 </div>
 
