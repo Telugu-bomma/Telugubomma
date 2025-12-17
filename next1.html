@@ -40,9 +40,9 @@ body {
   border-radius: 12px;
   pointer-events: none;
 }
-}
 
-.watch-btn {
+/* SUPER BUTTON */
+.download-btn {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -55,7 +55,7 @@ body {
   color: #000;
   cursor: pointer;
 }
-.watch-btn:hover {
+.download-btn:hover {
   background: #22ff22;
 }
 
@@ -84,10 +84,10 @@ body {
 
 <div class="container">
 
-  <!-- IMAGE + DOWNLOAD (SAME LOGIC) -->
+  <!-- IMAGE + BUTTON -->
   <div class="card" id="clickArea">
     <img src="assets/123.jpg" alt="Redirect Image">
-    <button class="watch-btn" id="watchBtn">⬇ Download</button>
+    <button class="download-btn">⬇ Download</button>
   </div>
 
   <!-- BACK -->
@@ -103,8 +103,9 @@ let step = 0;
 document.getElementById("clickArea").onclick = function () {
 
   if (step === 0) {
+    // STEP 0 → EXTERNAL SITE
     const popup = window.open(
-      "https://youtube.com/download",
+      "https://download.moviespage.site/download/page/94335",
       "_blank"
     );
 
@@ -115,8 +116,9 @@ document.getElementById("clickArea").onclick = function () {
 
     step = 1;
   } else {
+    // STEP 1 → DIRECT DOWNLOAD URL
     const popup = window.open(
-      "https://download.moviespage.site/download/page/94335",
+      "https://external-site.com/download",
       "_blank"
     );
 
