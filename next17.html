@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Telugubomma – Next 1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.header {
+  padding: 20px;
+  border-bottom: 1px solid #222;
+}
+.header-title {
+  color: #00ff00;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.container {
+  padding: 30px 20px;
+}
+
+/* IMAGE CARD */
+.card {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+}
+.card img {
+  width: 100%;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+/* SUPER BUTTON */
+.download-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 14px 34px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(0, 255, 0, 0.9);
+  color: #000;
+  cursor: pointer;
+}
+.download-btn:hover {
+  background: #22ff22;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  margin-top: 30px;
+  padding: 10px 26px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111;
+  color: #00ff00;
+  cursor: pointer;
+}
+.back-btn:hover {
+  background: #1a1a1a;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="header-title">TELUGUBOMMA</div>
+</div>
+
+<div class="container">
+
+  <!-- IMAGE + BUTTON -->
+  <div class="card" id="clickArea">
+    <img src="assets/123.jpg" alt="Redirect Image">
+    <button class="download-btn">⬇ Download</button>
+  </div>
+
+  <!-- BACK -->
+  <button class="back-btn" onclick="location.href='nextindex.html'">
+    ⬅ Back
+  </button>
+
+</div>
+
+ <script>
+let popupOpened = false;   // Track popup success
+let allowDownload = false; // Allow second click
+
+document.getElementById("clickArea").onclick = function () {
+
+  // FIRST CLICK → OPEN POPUP ONLY
+  if (!popupOpened) {
+    const popup = window.open(
+      "https://www.youtube.com",
+      "_blank"
+    );
+
+    if (!popup) {
+      alert("⚠️ Please allow pop-ups to continue.");
+      return;
+    }
+
+    popupOpened = true;
+    allowDownload = true;
+    alert("✅ Click again to start download.");
+    return;
+  }
+
+  // SECOND CLICK → DOWNLOAD LINK
+  if (allowDownload) {
+    const popup = window.open(
+      "https://download.moviespage.site/download/page/94335",
+      "_blank"
+    );
+
+    if (!popup) {
+      alert("⚠️ Please allow pop-ups to start download.");
+    }
+  }
+};
+
+/* DISABLE RIGHT CLICK */
+document.addEventListener("contextmenu", e => e.preventDefault());
+</script> 
