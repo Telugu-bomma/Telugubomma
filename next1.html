@@ -84,10 +84,10 @@ body {
 
 <div class="container">
 
-  <!-- IMAGE + DOWNLOAD -->
-  <div class="card" id="imageBox">
+  <!-- IMAGE + DOWNLOAD (SAME LOGIC) -->
+  <div class="card" id="clickArea">
     <img src="assets/123.jpg" alt="Redirect Image">
-    <button class="download-btn" id="downloadBtn">⬇ Download</button>
+    <button class="download-btn">⬇ Download</button>
   </div>
 
   <!-- BACK -->
@@ -98,35 +98,23 @@ body {
 </div>
 
 <script>
-let downloadStep = 0;
+let step = 0;
 
-/* IMAGE CLICK → ALWAYS OPEN EXTERNAL PAGE */
-document.getElementById("imageBox").onclick = function () {
-  window.open(
-    "https://download.moviespage.site/download/page/94335",
-    "_blank"
-  );
-};
+document.getElementById("clickArea").onclick = function () {
 
-/* DOWNLOAD BUTTON LOGIC */
-document.getElementById("downloadBtn").onclick = function (e) {
-  e.stopPropagation(); // prevent image click
-
-  if (downloadStep === 0) {
-    // First click → open external site
+  if (step === 0) {
     const popup = window.open(
       "https://download.moviespage.site/download/page/94335",
       "_blank"
     );
 
     if (!popup) {
-      alert("Please allow popups to continue download.");
+      alert("Please allow popups to continue.");
       return;
     }
 
-    downloadStep = 1;
+    step = 1;
   } else {
-    // Second click → final download
     const popup = window.open(
       "https://external-site.com/download",
       "_blank"
