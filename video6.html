@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hairpull</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.container {
+  padding: 20px;
+}
+
+.thumb-box {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.thumb-box img {
+  width: 100%;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.watch-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 14px 34px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(0, 255, 0, 0.9);
+  color: #000;
+  cursor: pointer;
+}
+.watch-btn:hover {
+  background: #22ff22;
+}
+
+video {
+  width: 100%;
+  max-width: 800px;
+  display: none;
+  margin-top: 20px;
+}
+
+.back-btn {
+  margin-top: 25px;
+  padding: 10px 24px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111;
+  color: #00ff00;
+  cursor: pointer;
+}
+.back-btn:hover {
+  background: #1a1a1a;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Video 1</h2>
+
+  <div class="thumb-box" id="thumbBox">
+    <img src="assets/123.jpg" alt="Video Thumbnail">
+    <button class="watch-btn" id="watchBtn">▶ Watch Video / Download</button>
+  </div>
+
+  <video id="player" controls width="100%">
+    <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/1.mp4" type="video/mp4">
+  </video>
+
+  <button class="back-btn" onclick="location.href='home.html'">⬅ Back</button>
+</div>
+
+<script>
+let popupOpened = false;   // track popup success
+let allowPlay = false;    // second click only
+
+document.getElementById("watchBtn").onclick = function () {
+
+  // FIRST CLICK → OPEN POPUP ONLY
+  if (!popupOpened) {
+    const popup = window.open("https://www.youtube.com", "_blank");
+
+    if (!popup) {
+      alert("⚠️ Please allow pop-ups to continue watching the video.");
+      return;
+    }
+
+    popupOpened = true;
+    alert("click again and enjoy the video.");
+    return;
+  }
+
+  // SECOND CLICK → PLAY VIDEO
+  document.getElementById("thumbBox").style.display = "none";
+  const video = document.getElementById("player");
+  video.style.display = "block";
+  video.play();
+};
+
+/* SECURITY */
+document.addEventListener("contextmenu", e => e.preventDefault());
+document.addEventListener("copy", e => e.preventDefault());
+document.addEventListener("cut", e => e.preventDefault());
+
+setInterval(() => {
+  if (window.outerWidth - window.innerWidth > 200 ||
+      window.outerHeight - window.innerHeight > 200) {
+    console.clear();
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
