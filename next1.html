@@ -31,7 +31,6 @@ body {
 .card {
   max-width: 700px;
   margin: 0 auto;
-  position: relative;
   cursor: pointer;
 }
 .card img {
@@ -75,45 +74,31 @@ body {
   <div class="header-title">TELUGUBOMMA</div>
 </div>
 
-  <div id="openExternal" style="cursor:pointer;">
-  <img src="assets/123.jpg" alt="Redirect Image">
-</div>
-
-<script>
-document.getElementById("openExternal").onclick = function () {
-  window.open(
-    "https://download.moviespage.site/download/page/94335",
-    "_blank"
-  );
-};
-</script>
-
 <div class="container">
 
   <!-- IMAGE CLICK → OPEN EXTERNAL SITE -->
-  <div class="card" id="openExternal">
+  <div class="card" id="externalLink">
     <img src="assets/123.jpg" alt="Redirect Image">
   </div>
 
-  <!-- DOWNLOAD BUTTON (MANUAL CLICK) -->
+  <!-- DOWNLOAD BUTTON -->
   <button class="download-btn"
-    onclick="window.open('https://external-site.com/download', '_blank')">
+    onclick="window.open('https://external-site.com/download','_blank')">
     ⬇ Download
   </button>
 
   <!-- BACK -->
   <button class="back-btn"
-    onclick="window.location.href='nextindex.html'">
+    onclick="location.href='nextindex.html'">
     ⬅ Back
   </button>
 
 </div>
 
 <script>
-/* OPEN EXTERNAL SITE ON IMAGE CLICK */
-document.getElementById("openExternal").onclick = function () {
+document.getElementById("externalLink").onclick = function () {
   window.open(
-    "https://external-site.com/page",
+    "https://download.moviespage.site/download/page/94335",
     "_blank"
   );
 };
