@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma – Next</title>
+<title>Telugubomma – Videos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -20,14 +20,41 @@ body {
   border-bottom: 2px solid #1f1f1f;
   background: rgba(0, 0, 0, 0.6);
 }
+
 .header-title {
   color: #00ff00;
-  font-size: 30px;
+  font-size: 32px;
   font-weight: bold;
 }
+
 .header-sub {
   color: #ccc;
+  font-size: 18px;
+}
+
+/* MENU */
+.menu {
+  text-align: center;
+  margin: 15px 0;
+}
+.menu a {
+  color: #00ff00;
+  text-decoration: none;
+  margin: 0 12px;
   font-size: 16px;
+}
+
+/* SEARCH */
+.search-container {
+  text-align: center;
+  margin: 15px;
+}
+#searchBox {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
 }
 
 /* GRID */
@@ -39,41 +66,35 @@ body {
 }
 
 .card {
-  position: relative;
-  cursor: pointer;
-}
-.card img {
-  width: 100%;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-}
-.card:hover img {
-  transform: scale(1.04);
-}
-
-/* BACK / NEXT */
-.nav {
-  text-align: center;
-  margin: 30px 0;
-}
-.nav button {
-  padding: 10px 26px;
-  font-size: 15px;
-  border-radius: 8px;
-  border: 1px solid #333;
   background: #111;
-  color: #00ff00;
-  cursor: pointer;
-  margin: 0 8px;
+  border: 1px solid #222;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: 0.25s;
 }
-.nav button:hover {
-  background: #1a1a1a;
+.card:hover {
+  transform: scale(1.05);
+  border-color: #00ff00;
 }
 
-/* FOOTER – ONLY ADDED */
+.thumb {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+}
+
+.card-title {
+  padding: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #00ff00;
+}
+
+/* FOOTER */
 .footer {
   text-align: center;
-  padding: 18px;
+  padding: 20px;
   border-top: 1px solid #222;
   color: #aaa;
   font-size: 14px;
@@ -83,41 +104,67 @@ body {
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
   <div class="header-title">TELUGUBOMMA</div>
-  <div class="header-sub">Telugu service portal</div>
+  <div class="header-sub">Public Service Portal</div>
   <div class="header-sub">Your happiness is my happiness 😍</div>
 </div>
 
-<div class="grid">
+<!-- MENU -->
+<div class="menu">
+  <a href="home.html">Home</a>
+  <a href="nextindex.html">Next collection</a>
+  <a href="about.html">About</a>
+</div>
+
+<!-- SEARCH -->
+<div class="search-container">
+  <input type="text" id="searchBox" placeholder="Search videos...">
+</div>
+
+<!-- VIDEO GRID -->
+<div class="grid" id="videoGrid">
 <script>
-for (let i = 1; i <= 20; i++) {
-  const num = i < 10 ? '0' + i : i;
-  document.write(`
-    <a href="next${i}.html" style="text-decoration:none;">
-      <div class="card">
-        <img src="assets/common/next${num}.png">
-      </div>
-    </a>
-  `);
-}
+  for (let i = 1; i <= 20; i++) {
+    document.write(`
+      <a href="video${i}.html" class="video-card" data-title="Video ${i}">
+        <div class="card">
+          <img src="assets/123.jpg" class="thumb">
+          <div class="card-title">Video ${i}</div>
+        </div>
+      </a>
+    `);
+  }
 </script>
 </div>
 
-<div class="nav">
-  <button onclick="location.href='index.html'">⬅ Back</button>
-  <button onclick="location.href='nextindex.html'">Next ➡</button>
-  <button onclick="location.href='about.html'">⬅ About</button>
-</div>
-
+<!-- FOOTER -->
 <div class="footer">
-  © 2025 Telugubomma • All Rights Reserved • Safe • Secure
+  © 2025 Telugubomma• All Rights Reserved • Safe • Secure
 </div>
 
+<!-- SEARCH JS -->
 <script>
-document.addEventListener("contextmenu", e => e.preventDefault());
-document.addEventListener("selectstart", e => e.preventDefault());
+document.getElementById('searchBox').addEventListener('keyup', function () {
+  const filter = this.value.toLowerCase();
+  document.querySelectorAll('.video-card').forEach(card => {
+    card.style.display = card.dataset.title.toLowerCase().includes(filter)
+      ? "block"
+      : "none";
+  });
+});
+</script>
+
+<!-- ADD HERE -->
+<script>
+document.addEventListener("contextmenu", function(e) {
+  e.preventDefault();
+});
+document.addEventListener("selectstart", function(e) {
+  e.preventDefault();
+});
 </script>
 
 </body>
-</html>
+  </html>
