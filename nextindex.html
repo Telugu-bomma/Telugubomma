@@ -38,68 +38,25 @@ body {
   gap: 12px;
 }
 
-/* CARD */
 .card {
   position: relative;
   cursor: pointer;
 }
-
 .card img {
   width: 100%;
   border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+.card:hover img {
+  transform: scale(1.04);
 }
 
-/* OVERLAY */
-.play-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-}
-
-/* PLAY ICON — MOBILE FIRST (15% of image) */
-.play-icon {
-  width: 15%;
-  aspect-ratio: 1 / 1;
-  background: #1e90ff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.play-icon::before {
-  content: "";
-  margin-left: 5%;
-  width: 0;
-  height: 0;
-  border-top: 22% solid transparent;
-  border-bottom: 22% solid transparent;
-  border-left: 35% solid #fff;
-}
-
-/* PC ONLY – slight glow (optional, no size change) */
-@media (min-width: 768px) {
-  .play-icon {
-    box-shadow: 0 0 18px rgba(30,144,255,0.7);
-  }
-}
-  
-<!-- MENU -->
-<div class="menu">
-  <a href="streamindex.html">Next collection</a>
-  <a href="home.html">back</a>
-</div>
-  
-/* BACK */
-.back {
+/* BACK / NEXT */
+.nav {
   text-align: center;
   margin: 30px 0;
 }
-.back button {
+.nav button {
   padding: 10px 26px;
   font-size: 15px;
   border-radius: 8px;
@@ -107,8 +64,9 @@ body {
   background: #111;
   color: #00ff00;
   cursor: pointer;
+  margin: 0 8px;
 }
-.back button:hover {
+.nav button:hover {
   background: #1a1a1a;
 }
 </style>
@@ -118,21 +76,17 @@ body {
 
 <div class="header">
   <div class="header-title">TELUGUBOMMA</div>
-  <div class="header-sub">Next Collection</div>
+  <div class="header-sub">Enjoy your day 😊</div>
 </div>
 
 <div class="grid">
 <script>
 for (let i = 1; i <= 20; i++) {
   const num = i < 10 ? '0' + i : i;
-
   document.write(`
     <a href="next${i}.html" style="text-decoration:none;">
       <div class="card">
-        <img src="assets/common/next${num}.png" alt="Next ${i}">
-        <div class="play-overlay">
-          <div class="play-icon"></div>
-        </div>
+        <img src="assets/common/next${num}.png">
       </div>
     </a>
   `);
@@ -140,12 +94,12 @@ for (let i = 1; i <= 20; i++) {
 </script>
 </div>
 
-<div class="back">
-  <button onclick="location.href='home.html'">⬅ Back to Home</button>
+<div class="nav">
+  <button onclick="location.href='home.html'">⬅ Back</button>
+  <button onclick="location.href='streamindex.html'">Next ➡</button>
 </div>
 
 <script>
-/* DISABLE RIGHT CLICK & SELECTION */
 document.addEventListener("contextmenu", e => e.preventDefault());
 document.addEventListener("selectstart", e => e.preventDefault());
 </script>
