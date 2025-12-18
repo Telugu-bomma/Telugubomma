@@ -47,44 +47,45 @@ body {
 .card img {
   width: 100%;
   border-radius: 12px;
-  transition: transform 0.3s ease;
-}
-
-.card:hover img {
-  transform: scale(1.05);
 }
 
 /* OVERLAY */
 .play-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.35);
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 12px;
 }
 
-/* PLAY ICON */
+/* PLAY ICON — MOBILE FIRST (15% of image) */
 .play-icon {
-  width: 80px;
-  height: 80px;
+  width: 15%;
+  aspect-ratio: 1 / 1;
   background: #1e90ff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 20px rgba(30,144,255,0.8);
 }
 
 .play-icon::before {
   content: "";
-  margin-left: 6px;
+  margin-left: 5%;
   width: 0;
   height: 0;
-  border-top: 14px solid transparent;
-  border-bottom: 14px solid transparent;
-  border-left: 22px solid #fff;
+  border-top: 22% solid transparent;
+  border-bottom: 22% solid transparent;
+  border-left: 35% solid #fff;
+}
+
+/* PC ONLY – slight glow (optional, no size change) */
+@media (min-width: 768px) {
+  .play-icon {
+    box-shadow: 0 0 18px rgba(30,144,255,0.7);
+  }
 }
 
 /* BACK */
