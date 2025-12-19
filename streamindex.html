@@ -48,19 +48,21 @@ body {
 }
 
 /* SEARCH */
-.search-container {
-  text-align: center;
-  margin: 15px;
-}
-#searchBox {
-  width: 80%;
-  padding: 10px;
+.search-box input {
+  width: 82%;
+  padding: 12px;
   font-size: 16px;
   border-radius: 10px;
-  border: 1px solid #333;
+  border: none;
+  outline: none;
+
+  /* 🔥 FIX */
   background: #111;
   color: #fff;
-  border: 
+  border: 1px solid #333;
+}
+.search-box input::placeholder {
+  color: #aaa; 
 }
 
 /* GRID */
