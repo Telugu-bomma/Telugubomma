@@ -129,11 +129,11 @@ body {
 <div class="grid" id="videoGrid">
 <script>
 for (let i = 1; i <= 20; i++) {
+  const num = i < 10 ? '0' + i : i;
   document.write(`
-    <a href="video${i}.html" class="video-card" data-title="Video ${i}">
+    <a href="next${i}.html" style="text-decoration:none;">
       <div class="card">
-        <img src="assets/soon.jpg" class="thumb">
-        <div class="card-title">Video ${i}</div>
+        <img src="assets/common/next${num}.png">
       </div>
     </a>
   `);
