@@ -5,7 +5,6 @@
 <title>Telugubomma – Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- CANONICAL -->
 <link rel="canonical" href="https://www.telugubomma.online/home.html">
 
 <style>
@@ -38,19 +37,14 @@ body {
   text-align: center;
   margin: 18px;
 }
-
 .search-box input {
   width: 82%;
   padding: 12px;
   font-size: 16px;
   border-radius: 10px;
-  border: none;
-  outline: none;
-
-  /* 🔥 FIX */
+  border: 1px solid #333;
   background: #111;
   color: #fff;
-  border: 1px solid #333;
 }
 .search-box input::placeholder {
   color: #aaa;
@@ -109,14 +103,12 @@ body {
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="header-title">TELUGUBOMMA</div>
-  <div class="header-sub">Telugu Service Portal</div>
-  <div class="header-sub">Your happiness is my happiness 😍</div>
+  <div class="header-sub">Enjoy your day 😊</div>
 </div>
 
-<!-- SEARCH BAR -->
+<!-- SEARCH -->
 <div class="search-box">
   <input type="text" id="searchBox" placeholder="Search videos...">
 </div>
@@ -125,18 +117,14 @@ body {
 <div class="grid" id="videoGrid">
 <script>
 for (let i = 1; i <= 20; i++) {
-  const num = i < 10 ? '0' + i : i;
 
-  /* 🔑 SEARCH KEYWORDS (can map to real file names safely) */
-  const keywords = `video${i} abc abc.mp4 file${i}`;
+  const num = i < 10 ? '0' + i : i; // 🔥 always 2 digits
+  const imgName = `video${num}.jpg`;
 
   document.write(`
-    <a href="video${i}.html"
-       class="video-card"
-       data-keywords="${keywords}"
-       style="text-decoration:none;">
+    <a href="video${i}.html" class="video-card" data-title="video${i}">
       <div class="card">
-        <img src="assets/video${num}.png">
+        <img src="assets/${imgName}" alt="Video ${i}">
       </div>
     </a>
   `);
@@ -144,29 +132,26 @@ for (let i = 1; i <= 20; i++) {
 </script>
 </div>
 
-<!-- NAV -->
 <div class="nav">
   <button onclick="location.href='index.html'">⬅ Back</button>
   <button onclick="location.href='nextindex.html'">Next ➡</button>
-  <button onclick="location.href='about.html'">About</button>
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
   © 2025 Telugubomma • All Rights Reserved • Safe • Secure
 </div>
 
-<!-- SEARCH LOGIC -->
 <script>
+/* SEARCH LOGIC */
 document.getElementById("searchBox").addEventListener("keyup", function () {
-  const q = this.value.toLowerCase();
+  const val = this.value.toLowerCase();
   document.querySelectorAll(".video-card").forEach(card => {
-    const keys = card.dataset.keywords.toLowerCase();
-    card.style.display = keys.includes(q) ? "block" : "none";
+    card.style.display =
+      card.dataset.title.includes(val) ? "block" : "none";
   });
 });
 
-/* SECURITY UI */
+/* SECURITY */
 document.addEventListener("contextmenu", e => e.preventDefault());
 document.addEventListener("selectstart", e => e.preventDefault());
 </script>
