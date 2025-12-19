@@ -64,8 +64,10 @@ body {
 }
 .card img {
   width: 100%;
+  aspect-ratio: 16 / 9;   /* 🔥 force same ratio */
+  object-fit: cover;      /* 🔥 crop safely */
   border-radius: 12px;
-  transition: transform 0.3s ease;
+  display: block;
 }
 .card:hover img {
   transform: scale(1.04);
