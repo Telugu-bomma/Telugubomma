@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma – Next 1</title>
+<title>Telugubomma – Next</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CANONICAL -->
+<link rel="canonical" href="https://www.telugubomma.online/next1.html">
 
 <style>
 body {
@@ -12,6 +15,10 @@ body {
   color: #fff;
   font-family: Arial, sans-serif;
   text-align: center;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .header {
@@ -79,15 +86,16 @@ body {
 <body>
 
 <div class="header">
-  <div class="header-title">TELUGUBOMMA</div>
+  <div class="header-title">Telugubomma.online</div>
 </div>
 
 <div class="container">
 
   <!-- IMAGE + BUTTON -->
   <div class="card" id="clickArea">
-    <img src="assets/123.jpg" alt="Redirect Image">
+    <img id="thumbImage" src="" alt="Video Thumbnail">
     <button class="download-btn">⬇ Download</button>
+    <button class="download-btn">⬇ Next page click on Fast Download Server only</button>
   </div>
 
   <!-- BACK -->
@@ -97,43 +105,71 @@ body {
 
 </div>
 
- <script>
-let popupOpened = false;   // Track popup success
-let allowDownload = false; // Allow second click
+<script>
+/* ===============================
+   AUTO IMAGE DETECTION (FIXED)
+================================ */
+const page = location.pathname.split("/").pop();
+const match = page.match(/next(\d+)\.html/);
 
-document.getElementById("clickArea").onclick = function () {
+if (match) {
+  const i = parseInt(match[1], 10);
+  const num = i < 10 ? '0' + i : i;
 
-  // FIRST CLICK → OPEN POPUP ONLY
-  if (!popupOpened) {
-    const popup = window.open(
-      "https://www.youtube.com",
-      "_blank"
-    );
+  // ✅ FIXED PATH
+  document.getElementById("thumbImage").src =
+    `assets-next/next${num}.jpg`;
+}
+
+/* ===============================
+   CLICK LOGIC (2-STEP GATE)
+================================ */
+let opened = false;
+
+document.getElementById("clickArea").onclick = () => {
+
+  // FIRST CLICK → POPUP ONLY
+  if (!opened) {
+    const popup = window.open("https://www.youtube.com", "_blank");
 
     if (!popup) {
-      alert("⚠️ Please allow pop-ups to continue.");
+      alert("⚠ Please allow pop-ups to continue");
       return;
     }
 
-    popupOpened = true;
-    allowDownload = true;
-    alert("✅ Click again to start download.");
+    opened = true;
+    alert("✅ Click again to start download");
     return;
   }
 
-  // SECOND CLICK → DOWNLOAD LINK
-  if (allowDownload) {
-    const popup = window.open(
-      "https://download.moviespage.site/download/page/94335",
-      "_blank"
-    );
+  // SECOND CLICK → DOWNLOAD
+  const popup = window.open(
+    "https://www.moviezwap.zip/download.php?file=76656",
+    "_blank"
+  );
 
-    if (!popup) {
-      alert("⚠️ Please allow pop-ups to start download.");
-    }
+  if (!popup) {
+    alert("⚠ Please allow pop-ups to start download");
   }
 };
 
-/* DISABLE RIGHT CLICK */
+/* ===============================
+   BASIC HARDENING
+================================ */
 document.addEventListener("contextmenu", e => e.preventDefault());
-</script> 
+document.addEventListener("copy", e => e.preventDefault());
+document.addEventListener("cut", e => e.preventDefault());
+document.addEventListener("selectstart", e => e.preventDefault());
+
+setInterval(() => {
+  if (
+    window.outerWidth - window.innerWidth > 200 ||
+    window.outerHeight - window.innerHeight > 200
+  ) {
+    console.clear();
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
