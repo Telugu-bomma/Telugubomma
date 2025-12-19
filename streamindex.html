@@ -143,7 +143,9 @@ for (let i = 1; i <= 20; i++) {
   document.write(`
     <a href="stream${i}.html" style="text-decoration:none;">
       <div class="card">
-        <img src="assets/next${num}.png">
+        <img 
+  src="assets-stream/stream${num}.jpg"
+  onerror="this.onerror=null;this.src='assets-stream/coming-soon.jpg';">
       </div>
     </a>
   `);
