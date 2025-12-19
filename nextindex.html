@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma – Next</title>
+<title>Telugubomma – Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- CANONICAL -->
 <link rel="canonical" href="https://www.telugubomma.online/home.html">
 
 <style>
@@ -43,11 +42,9 @@ body {
   padding: 12px;
   font-size: 16px;
   border-radius: 10px;
-  border: none;
-  outline: none;
+  border: 1px solid #333;
   background: #111;
   color: #fff;
-  border: 1px solid #333;
 }
 .search-box input::placeholder {
   color: #aaa;
@@ -67,8 +64,10 @@ body {
 }
 .card img {
   width: 100%;
+  aspect-ratio: 3 / 4;   /* 🔥 force same ratio */
+  object-fit: cover;      /* 🔥 crop safely */
   border-radius: 12px;
-  transition: transform 0.3s ease;
+  display: block;
 }
 .card:hover img {
   transform: scale(1.04);
@@ -111,7 +110,7 @@ body {
   <div class="header-sub">Enjoy your day 😊</div>
 </div>
 
-<!-- SEARCH BAR (CORRECT POSITION) -->
+<!-- SEARCH -->
 <div class="search-box">
   <input type="text" id="searchBox" placeholder="Search videos...">
 </div>
@@ -120,11 +119,14 @@ body {
 <div class="grid" id="videoGrid">
 <script>
 for (let i = 1; i <= 20; i++) {
-  const num = i < 10 ? '0' + i : i;
+
+  const num = i < 10 ? '0' + i : i; // 🔥 always 2 digits
+  const imgName = `next${num}.jpg`;
+
   document.write(`
-    <a href="next${i}.html" class="video-card" data-title="next${i}" style="text-decoration:none;">
+    <a href="nexr${i}.html" class="video-card" data-title="video${i}">
       <div class="card">
-        <img src="assets/common/next${num}.png">
+        <img src="assets/next${imgName}" alt="Video ${i}">
       </div>
     </a>
   `);
@@ -133,8 +135,8 @@ for (let i = 1; i <= 20; i++) {
 </div>
 
 <div class="nav">
-  <button onclick="location.href='home.html'">⬅ Back</button>
-  <button onclick="location.href='streamindex.html'">Next ➡</button>
+  <button onclick="location.href='index.html'">⬅ Back</button>
+  <button onclick="location.href='nextindex.html'">Next ➡</button>
 </div>
 
 <div class="footer">
@@ -144,9 +146,10 @@ for (let i = 1; i <= 20; i++) {
 <script>
 /* SEARCH LOGIC */
 document.getElementById("searchBox").addEventListener("keyup", function () {
-  const value = this.value.toLowerCase();
+  const val = this.value.toLowerCase();
   document.querySelectorAll(".video-card").forEach(card => {
-    card.style.display = card.dataset.title.includes(value) ? "block" : "none";
+    card.style.display =
+      card.dataset.title.includes(val) ? "block" : "none";
   });
 });
 
