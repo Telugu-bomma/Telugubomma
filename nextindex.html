@@ -121,12 +121,12 @@ body {
 for (let i = 1; i <= 20; i++) {
 
   const num = i < 10 ? '0' + i : i; // 🔥 always 2 digits
-  const imgName = `assets-next${num}.jpg`;
+  const imgName = `next${num}.jpg`;
 
   document.write(`
-    <a href=assets-next${i}.html" class="video-card" data-title="video${i}">
+    <a href=next${i}.html" class="video-card" data-title="video${i}">
       <div class="card">
-        <img src="assets/next${imgName}" alt="Video ${i}">
+        <img src="assets-next${imgName}" alt="Video ${i}">
       </div>
     </a>
   `);
