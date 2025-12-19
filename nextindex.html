@@ -5,6 +5,9 @@
 <title>Telugubomma – Next</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- CANONICAL -->
+<link rel="canonical" href="https://www.telugubomma.online/home.html">
+
 <style>
 body {
   margin: 0;
@@ -28,6 +31,28 @@ body {
 .header-sub {
   color: #ccc;
   font-size: 16px;
+}
+  /* SEARCH */
+.search-box {
+  text-align: center;
+  margin: 18px;
+}
+
+.search-box input {
+  width: 82%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  /* 🔥 FIX */
+  background: #111;
+  color: #fff;
+  border: 1px solid #333;
+}
+.search-box input::placeholder {
+  color: #aaa;
 }
 
 /* GRID */
@@ -106,6 +131,10 @@ for (let i = 1; i <= 20; i++) {
 <div class="nav">
   <button onclick="location.href='home.html'">⬅ Back</button>
   <button onclick="location.href='streamindex.html'">Next ➡</button>
+</div>
+  <!-- SEARCH BAR -->
+<div class="search-box">
+  <input type="text" id="searchBox" placeholder="Search videos...">
 </div>
 
 <div class="footer">
