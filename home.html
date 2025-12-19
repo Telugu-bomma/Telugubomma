@@ -36,15 +36,24 @@ body {
 /* SEARCH */
 .search-box {
   text-align: center;
-  margin: 15px;
+  margin: 18px;
 }
+
 .search-box input {
-  width: 80%;
-  padding: 10px;
+  width: 82%;
+  padding: 12px;
   font-size: 16px;
   border-radius: 10px;
   border: none;
   outline: none;
+
+  /* 🔥 FIX */
+  background: #111;
+  color: #fff;
+  border: 1px solid #333;
+}
+.search-box input::placeholder {
+  color: #aaa;
 }
 
 /* GRID */
