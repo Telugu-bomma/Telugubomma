@@ -127,7 +127,9 @@ for (let i = 1; i <= 20; i++) {
   document.write(`
     <a href="next${i}.html" class="video-card" data-title="next${i}">
       <div class="card">
-        <img src="assets-next/${imgName}" alt="Next ${i}">
+        <img 
+  src="assets-next/next${num}.jpg"
+  onerror="this.onerror=null;this.src='assets-next/comingsoon.jpg';">
       </div>
     </a>
   `);
@@ -136,7 +138,7 @@ for (let i = 1; i <= 20; i++) {
 </div>
 
 <div class="nav">
-  <button onclick="location.href='index.html'">⬅ Back</button>
+  <button onclick="location.href='home.html'">⬅ Back</button>
   <button onclick="location.href='streamindex.html'">Next ➡</button>
 </div>
 
