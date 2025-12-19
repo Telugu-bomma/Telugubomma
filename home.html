@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma – Next</title>
+<title>Telugubomma – Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ✅ CANONICAL -->
+<!-- CANONICAL -->
 <link rel="canonical" href="https://www.telugubomma.online/home.html">
 
 <style>
@@ -31,6 +31,20 @@ body {
 .header-sub {
   color: #ccc;
   font-size: 16px;
+}
+
+/* SEARCH */
+.search-box {
+  text-align: center;
+  margin: 15px;
+}
+.search-box input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
 }
 
 /* GRID */
@@ -86,28 +100,30 @@ body {
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
   <div class="header-title">TELUGUBOMMA</div>
-  <div class="header-sub">Telugu service portal</div>
+  <div class="header-sub">Telugu Service Portal</div>
   <div class="header-sub">Your happiness is my happiness 😍</div>
 </div>
 
-<div class="grid">
-<script>
-/* 🔒 INTERNAL FILE NAME MAP (NO UI IMPACT) */
-const fileMap = {
-  1: "abc.mp4",
-  2: "hairpull.mp4",
-  3: "fight01.mp4",
-  4: "scene92.mp4"
-};
+<!-- SEARCH BAR -->
+<div class="search-box">
+  <input type="text" id="searchBox" placeholder="Search videos...">
+</div>
 
+<!-- GRID -->
+<div class="grid" id="videoGrid">
+<script>
 for (let i = 1; i <= 20; i++) {
   const num = i < 10 ? '0' + i : i;
-  const keywords = fileMap[i] ? `video${i} ${fileMap[i]}` : `video${i}`;
+
+  /* 🔑 SEARCH KEYWORDS (can map to real file names safely) */
+  const keywords = `video${i} abc abc.mp4 file${i}`;
 
   document.write(`
     <a href="next${i}.html"
+       class="video-card"
        data-keywords="${keywords}"
        style="text-decoration:none;">
       <div class="card">
@@ -119,17 +135,29 @@ for (let i = 1; i <= 20; i++) {
 </script>
 </div>
 
+<!-- NAV -->
 <div class="nav">
   <button onclick="location.href='index.html'">⬅ Back</button>
   <button onclick="location.href='nextindex.html'">Next ➡</button>
-  <button onclick="location.href='about.html'">⬅ About</button>
+  <button onclick="location.href='about.html'">About</button>
 </div>
 
+<!-- FOOTER -->
 <div class="footer">
   © 2025 Telugubomma • All Rights Reserved • Safe • Secure
 </div>
 
+<!-- SEARCH LOGIC -->
 <script>
+document.getElementById("searchBox").addEventListener("keyup", function () {
+  const q = this.value.toLowerCase();
+  document.querySelectorAll(".video-card").forEach(card => {
+    const keys = card.dataset.keywords.toLowerCase();
+    card.style.display = keys.includes(q) ? "block" : "none";
+  });
+});
+
+/* SECURITY UI */
 document.addEventListener("contextmenu", e => e.preventDefault());
 document.addEventListener("selectstart", e => e.preventDefault());
 </script>
