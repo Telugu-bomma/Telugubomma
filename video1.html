@@ -1,13 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma – Next</title>
+<title>Telugubomma – Video</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- CANONICAL -->
-<link rel="canonical" href="https://www.telugubomma.online/next1.html">
+<link rel="canonical" href="https://www.telugubomma.online/video1.html">
 
 <style>
 body {
@@ -94,12 +93,12 @@ body {
 
   <!-- IMAGE + BUTTON -->
   <div class="card" id="clickArea">
-    <img id="thumbImage" src="" alt="Redirect Image">
+    <img id="thumbImage" src="" alt="Video Thumbnail">
     <button class="download-btn">⬇ Download</button>
   </div>
 
   <!-- BACK -->
-  <button class="back-btn" onclick="location.href='nextindex.html'">
+  <button class="back-btn" onclick="location.href='home.html'">
     ⬅ Back
   </button>
 
@@ -107,7 +106,7 @@ body {
 
 <script>
 /* ===============================
-   AUTO IMAGE DETECTION
+   AUTO IMAGE DETECTION (FIXED)
 ================================ */
 const page = location.pathname.split("/").pop();
 const match = page.match(/video(\d+)\.html/);
@@ -116,8 +115,9 @@ if (match) {
   const i = parseInt(match[1], 10);
   const num = i < 10 ? '0' + i : i;
 
+  // ✅ CORRECT PATH + NAME
   document.getElementById("thumbImage").src =
-    `assets${num}.png`;
+    `assets/video${num}.jpg`;
 }
 
 /* ===============================
@@ -129,10 +129,7 @@ document.getElementById("clickArea").onclick = () => {
 
   // FIRST CLICK → POPUP ONLY
   if (!opened) {
-    const popup = window.open(
-      "https://www.youtube.com",
-      "_blank"
-    );
+    const popup = window.open("https://www.youtube.com", "_blank");
 
     if (!popup) {
       alert("⚠ Please allow pop-ups to continue");
