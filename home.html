@@ -1,141 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Telugubomma – Next</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<title>Telugubomma – Next</title>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  <style>
+  
 <!-- ✅ CANONICAL -->
 <link rel="canonical" href="https://www.telugubomma.online/home.html">
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0d0d0d;
-  color: #fff;
-}
-
-/* HEADER */
-.header {
-  text-align: center;
-  padding: 25px;
-  border-bottom: 2px solid #1f1f1f;
-  background: rgba(0, 0, 0, 0.6);
-}
-.header-title {
-  color: #00ff00;
-  font-size: 30px;
-  font-weight: bold;
-}
-.header-sub {
-  color: #ccc;
-  font-size: 16px;
-}
-
-/* GRID */
-.grid {
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-.card {
-  position: relative;
-  cursor: pointer;
-}
-.card img {
-  width: 100%;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-}
-.card:hover img {
-  transform: scale(1.04);
-}
-
-/* NAV */
-.nav {
-  text-align: center;
-  margin: 30px 0;
-}
-.nav button {
-  padding: 10px 26px;
-  font-size: 15px;
-  border-radius: 8px;
-  border: 1px solid #333;
-  background: #111;
-  color: #00ff00;
-  cursor: pointer;
-  margin: 0 8px;
-}
-.nav button:hover {
-  background: #1a1a1a;
-}
-
-/* FOOTER */
-.footer {
-  text-align: center;
-  padding: 18px;
-  border-top: 1px solid #222;
-  color: #aaa;
-  font-size: 14px;
-}
-</style>
-</head>
-
-<body>
-
-<div class="header">
-  <div class="header-title">TELUGUBOMMA</div>
-  <div class="header-sub">Telugu service portal</div>
-  <div class="header-sub">Your happiness is my happiness 😍</div>
-</div>
-
-<div class="grid">
-<script>
-/* 🔒 UI NAME ≠ REAL FILE NAME (SEARCH FIX) */
-const fileMap = {
-  1: "kaantha.mp4",
-  2: "mass.mp4",
-  3: "12a Railway.mp4",
-  4: "santahana.mp4"
-  5. "sisu"
-  // add more when needed
-};
-
-for (let i = 1; i <= 20; i++) {
-  const num = i < 10 ? '0' + i : i;
-  const file = fileMap[i] || "";
-
-  document.write(`
-    <a href="next${i}.html"
-       class="video-card"
-       data-title="video ${i} ${file} ${file.replace('.mp4','')}"
-       style="text-decoration:none;">
-      <div class="card">
-        <img src="assets/common/next${num}.png">
-      </div>
-    </a>
-  `);
-}
-</script>
-</div>
-
-<div class="nav">
-  <button onclick="location.href='index.html'">⬅ Back</button>
-  <button onclick="location.href='nextindex.html'">Next ➡</button>
-  <button onclick="location.href='about.html'">⬅ About</button>
-</div>
-
-<div class="footer">
-  © 2025 Telugubomma • All Rights Reserved • Safe • Secure
-</div>
-
-<script>
-document.addEventListener("contextmenu", e => e.preventDefault());
-document.addEventListener("selectstart", e => e.preventDefault());
-</script>
-
-</body>
+<style>  
+body {  
+  margin: 0;  
+  font-family: Arial, sans-serif;  
+  background: #0d0d0d;  
+  color: #fff;  
+}  
+  
+/* HEADER */  
+.header {  
+  text-align: center;  
+  padding: 25px;  
+  border-bottom: 2px solid #1f1f1f;  
+  background: rgba(0, 0, 0, 0.6);  
+}  
+.header-title {  
+  color: #00ff00;  
+  font-size: 30px;  
+  font-weight: bold;  
+}  
+.header-sub {  
+  color: #ccc;  
+  font-size: 16px;  
+}  
+  
+/* GRID */  
+.grid {  
+  padding: 20px;  
+  display: grid;  
+  grid-template-columns: repeat(4, 1fr);  
+  gap: 12px;  
+}  
+  
+.card {  
+  position: relative;  
+  cursor: pointer;  
+}  
+.card img {  
+  width: 100%;  
+  border-radius: 12px;  
+  transition: transform 0.3s ease;  
+}  
+.card:hover img {  
+  transform: scale(1.04);  
+}  
+  
+/* BACK / NEXT */  
+.nav {  
+  text-align: center;  
+  margin: 30px 0;  
+}  
+.nav button {  
+  padding: 10px 26px;  
+  font-size: 15px;  
+  border-radius: 8px;  
+  border: 1px solid #333;  
+  background: #111;  
+  color: #00ff00;  
+  cursor: pointer;  
+  margin: 0 8px;  
+}  
+.nav button:hover {  
+  background: #1a1a1a;  
+}  
+  
+/* FOOTER – ONLY ADDED */  
+.footer {  
+  text-align: center;  
+  padding: 18px;  
+  border-top: 1px solid #222;  
+  color: #aaa;  
+  font-size: 14px;  
+}  
+</style>  </head>  <body>  <div class="header">  
+  <div class="header-title">TELUGUBOMMA</div>  
+  <div class="header-sub">Telugu service portal</div>  
+  <div class="header-sub">Your happiness is my happiness 😍</div>  
+</div>  <div class="grid">  
+<script>  
+for (let i = 1; i <= 20; i++) {  
+  const num = i < 10 ? '0' + i : i;  
+  document.write(`  
+    <a href="next${i}.html" style="text-decoration:none;">  
+      <div class="card">  
+        <img src="assets/common/next${num}.png">  
+      </div>  
+    </a>  
+  `);  
+}  
+</script>  
+</div>  <div class="nav">  
+  <button onclick="location.href='index.html'">⬅ Back</button>  
+  <button onclick="location.href='nextindex.html'">Next ➡</button>  
+  <button onclick="location.href='about.html'">⬅ About</button>  
+</div>  <div class="footer">  
+  © 2025 Telugubomma • All Rights Reserved • Safe • Secure  
+</div>  <script>  
+document.addEventListener("contextmenu", e => e.preventDefault());  
+document.addEventListener("selectstart", e => e.preventDefault());  
+</script>  </body>  
 </html>
