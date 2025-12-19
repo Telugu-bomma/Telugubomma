@@ -2,76 +2,83 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma – Next</title>
+<title>Telugubomma – Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- CANONICAL (FIXED) -->
-<link rel="canonical" href="https://www.telugubomma.online/next1.html">
+<link rel="canonical" href="https://www.telugubomma.online/home.html">
 
 <style>
 body {
   margin: 0;
-  background: #000;
-  color: #fff;
   font-family: Arial, sans-serif;
-  text-align: center;
-
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+  background: #0d0d0d;
+  color: #fff;
 }
 
+/* HEADER */
 .header {
-  padding: 20px;
-  border-bottom: 1px solid #222;
+  text-align: center;
+  padding: 25px;
+  border-bottom: 2px solid #1f1f1f;
+  background: rgba(0, 0, 0, 0.6);
 }
 .header-title {
   color: #00ff00;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: bold;
 }
-
-.container {
-  padding: 30px 20px;
+.header-sub {
+  color: #ccc;
+  font-size: 16px;
 }
 
-/* IMAGE CARD */
+/* SEARCH */
+.search-box {
+  text-align: center;
+  margin: 18px;
+}
+.search-box input {
+  width: 82%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: #111;
+  color: #fff;
+}
+.search-box input::placeholder {
+  color: #aaa;
+}
+
+/* GRID */
+.grid {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
 .card {
-  max-width: 700px;
-  margin: 0 auto;
   position: relative;
   cursor: pointer;
 }
-
 .card img {
   width: 100%;
-  aspect-ratio: 3 / 4;          /* ✅ FIX: SAME SIZE ALWAYS */
-  object-fit: cover;            /* ✅ NO STRETCH */
+  aspect-ratio: 3 / 4;   /* 🔥 force same ratio */
+  object-fit: cover;      /* 🔥 crop safely */
   border-radius: 12px;
-  pointer-events: none;
+  display: block;
+}
+.card:hover img {
+  transform: scale(1.04);
 }
 
-/* SUPER BUTTON */
-.download-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 14px 34px;
-  font-size: 18px;
-  border: none;
-  border-radius: 10px;
-  background: rgba(0, 255, 0, 0.9);
-  color: #000;
-  cursor: pointer;
+/* NAV */
+.nav {
+  text-align: center;
+  margin: 30px 0;
 }
-.download-btn:hover {
-  background: #22ff22;
-}
-
-/* BACK BUTTON */
-.back-btn {
-  margin-top: 30px;
+.nav button {
   padding: 10px 26px;
   font-size: 15px;
   border-radius: 8px;
@@ -79,9 +86,19 @@ body {
   background: #111;
   color: #00ff00;
   cursor: pointer;
+  margin: 0 8px;
 }
-.back-btn:hover {
+.nav button:hover {
   background: #1a1a1a;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 18px;
+  border-top: 1px solid #222;
+  color: #aaa;
+  font-size: 14px;
 }
 </style>
 </head>
@@ -90,87 +107,55 @@ body {
 
 <div class="header">
   <div class="header-title">TELUGUBOMMA</div>
+  <div class="header-sub">Enjoy your day 😊</div>
 </div>
 
-<div class="container">
+<!-- SEARCH -->
+<div class="search-box">
+  <input type="text" id="searchBox" placeholder="Search videos...">
+</div>
 
-  <!-- IMAGE + BUTTON -->
-  <div class="card" id="clickArea">
-    <img id="thumbImage" src="" alt="Video Thumbnail">
-    <button class="download-btn">⬇ Download</button>
-  </div>
+<!-- GRID -->
+<div class="grid" id="videoGrid">
+<script>
+for (let i = 1; i <= 20; i++) {
 
-  <!-- BACK -->
-  <button class="back-btn" onclick="location.href='home.html'">
-    ⬅ Back
-  </button>
+  const num = i < 10 ? '0' + i : i; // 🔥 always 2 digits
+  const imgName = `next${num}.jpg`;
 
+  document.write(`
+    <a href="next${i}.html" class="video-card" data-title="video${i}">
+      <div class="card">
+        <img src="assets-index/${imgName}" alt="Video ${i}">
+      </div>
+    </a>
+  `);
+}
+</script>
+</div>
+
+<div class="nav">
+  <button onclick="location.href='home.html'">⬅ Back</button>
+  <button onclick="location.href='streamindex.html'">Next ➡</button>
+</div>
+
+<div class="footer">
+  © 2025 Telugubomma • All Rights Reserved • Safe • Secure
 </div>
 
 <script>
-/* ===============================
-   AUTO IMAGE DETECTION (FIXED)
-================================ */
-const page = location.pathname.split("/").pop();
-const match = page.match(/next(\d+)\.html/);
+/* SEARCH LOGIC */
+document.getElementById("searchBox").addEventListener("keyup", function () {
+  const val = this.value.toLowerCase();
+  document.querySelectorAll(".video-card").forEach(card => {
+    card.style.display =
+      card.dataset.title.includes(val) ? "block" : "none";
+  });
+});
 
-if (match) {
-  const i = parseInt(match[1], 10);
-  const num = i < 10 ? '0' + i : i;
-
-  /* ✅ CORRECT FOLDER + NAME */
-  document.getElementById("thumbImage").src =
-    `assets-next/next${num}.jpg`;
-}
-
-/* ===============================
-   CLICK LOGIC (2-STEP GATE)
-================================ */
-let opened = false;
-
-document.getElementById("clickArea").onclick = () => {
-
-  // FIRST CLICK → POPUP ONLY
-  if (!opened) {
-    const popup = window.open("https://www.youtube.com", "_blank");
-
-    if (!popup) {
-      alert("⚠ Please allow pop-ups to continue");
-      return;
-    }
-
-    opened = true;
-    alert("✅ Click again to start download");
-    return;
-  }
-
-  // SECOND CLICK → DOWNLOAD
-  const popup = window.open(
-    "https://www.moviezwap.zip/download.php?file=76883",
-    "_blank"
-  );
-
-  if (!popup) {
-    alert("⚠ Please allow pop-ups to start download");
-  }
-};
-
-/* ===============================
-   BASIC HARDENING
-================================ */
+/* SECURITY */
 document.addEventListener("contextmenu", e => e.preventDefault());
-document.addEventListener("copy", e => e.preventDefault());
-document.addEventListener("cut", e => e.preventDefault());
 document.addEventListener("selectstart", e => e.preventDefault());
-
-setInterval(() => {
-  if (
-    window.outerWidth - window.innerWidth > 200 ||
-    window.outerHeight - window.innerHeight > 200
-  ) {
-    console.clear();
-  }
-}, 1000);
 </script>
 
 </body>
