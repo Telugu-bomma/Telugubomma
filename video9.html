@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hairpull</title>
+<title>Telugubomma – Video</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CANONICAL -->
+<link rel="canonical" href="https://www.telugubomma.online/video1.html">
 
 <style>
 body {
@@ -12,27 +15,41 @@ body {
   color: #fff;
   font-family: Arial, sans-serif;
   text-align: center;
+
   user-select: none;
   -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.header {
+  padding: 20px;
+  border-bottom: 1px solid #222;
+}
+.header-title {
+  color: #00ff00;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .container {
-  padding: 20px;
+  padding: 30px 20px;
 }
 
-.thumb-box {
-  position: relative;
-  max-width: 800px;
+/* IMAGE CARD */
+.card {
+  max-width: 700px;
   margin: 0 auto;
+  position: relative;
+  cursor: pointer;
 }
-
-.thumb-box img {
+.card img {
   width: 100%;
   border-radius: 12px;
   pointer-events: none;
 }
 
-.watch-btn {
+/* SUPER BUTTON */
+.download-btn {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -45,20 +62,14 @@ body {
   color: #000;
   cursor: pointer;
 }
-.watch-btn:hover {
+.download-btn:hover {
   background: #22ff22;
 }
 
-video {
-  width: 100%;
-  max-width: 800px;
-  display: none;
-  margin-top: 20px;
-}
-
+/* BACK BUTTON */
 .back-btn {
-  margin-top: 25px;
-  padding: 10px 24px;
+  margin-top: 30px;
+  padding: 10px 26px;
   font-size: 15px;
   border-radius: 8px;
   border: 1px solid #333;
@@ -74,56 +85,86 @@ video {
 
 <body>
 
-<div class="container">
-  <h2>Video 1</h2>
+<div class="header">
+  <div class="header-title">TELUGUBOMMA</div>
+</div>
 
-  <div class="thumb-box" id="thumbBox">
-    <img src="assets/123.jpg" alt="Video Thumbnail">
-    <button class="watch-btn" id="watchBtn">▶ Watch Video / Download</button>
+<div class="container">
+
+  <!-- IMAGE + BUTTON -->
+  <div class="card" id="clickArea">
+    <img id="thumbImage" src="" alt="Video Thumbnail">
+    <button class="download-btn">⬇ Download</button>
   </div>
 
-  <video id="player" controls width="100%">
-    <source src="https://billowing-shadow-579f.mailforwebsite7.workers.dev/stream/1.mp4" type="video/mp4">
-  </video>
+  <!-- BACK -->
+  <button class="back-btn" onclick="location.href='home.html'">
+    ⬅ Back
+  </button>
 
-  <button class="back-btn" onclick="location.href='home.html'">⬅ Back</button>
 </div>
 
 <script>
-let popupOpened = false;   // track popup success
-let allowPlay = false;    // second click only
+/* ===============================
+   AUTO IMAGE DETECTION (FIXED)
+================================ */
+const page = location.pathname.split("/").pop();
+const match = page.match(/video(\d+)\.html/);
 
-document.getElementById("watchBtn").onclick = function () {
+if (match) {
+  const i = parseInt(match[1], 10);
+  const num = i < 10 ? '0' + i : i;
 
-  // FIRST CLICK → OPEN POPUP ONLY
-  if (!popupOpened) {
+  // ✅ CORRECT PATH + NAME
+  document.getElementById("thumbImage").src =
+    `assets/video${num}.jpg`;
+}
+
+/* ===============================
+   CLICK LOGIC (2-STEP GATE)
+================================ */
+let opened = false;
+
+document.getElementById("clickArea").onclick = () => {
+
+  // FIRST CLICK → POPUP ONLY
+  if (!opened) {
     const popup = window.open("https://www.youtube.com", "_blank");
 
     if (!popup) {
-      alert("⚠️ Please allow pop-ups to continue watching the video.");
+      alert("⚠ Please allow pop-ups to continue");
       return;
     }
 
-    popupOpened = true;
-    alert("click again and enjoy the video.");
+    opened = true;
+    alert("✅ Click again to start download");
     return;
   }
 
-  // SECOND CLICK → PLAY VIDEO
-  document.getElementById("thumbBox").style.display = "none";
-  const video = document.getElementById("player");
-  video.style.display = "block";
-  video.play();
+  // SECOND CLICK → DOWNLOAD
+  const popup = window.open(
+    "https://tellybiz.in/?f=2ple5o",
+    "_blank"
+  );
+
+  if (!popup) {
+    alert("⚠ Please allow pop-ups to start download");
+  }
 };
 
-/* SECURITY */
+/* ===============================
+   BASIC HARDENING
+================================ */
 document.addEventListener("contextmenu", e => e.preventDefault());
 document.addEventListener("copy", e => e.preventDefault());
 document.addEventListener("cut", e => e.preventDefault());
+document.addEventListener("selectstart", e => e.preventDefault());
 
 setInterval(() => {
-  if (window.outerWidth - window.innerWidth > 200 ||
-      window.outerHeight - window.innerHeight > 200) {
+  if (
+    window.outerWidth - window.innerWidth > 200 ||
+    window.outerHeight - window.innerHeight > 200
+  ) {
     console.clear();
   }
 }, 1000);
