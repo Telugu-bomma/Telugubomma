@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Coming Soon</title>
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.telugubomma.online/">
+
+  <!-- Privacy & SEO -->
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: radial-gradient(circle at top, #111 0%, #000 60%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
+      color: #eaeaea;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    h1 {
+      font-size: 3rem;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+      animation: glow 2.5s infinite alternate;
+    }
+
+    p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      margin-bottom: 25px;
+    }
+
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255,255,255,0.15);
+      border-top: 4px solid #00ff99;
+      border-radius: 50%;
+      margin: 0 auto 30px;
+      animation: spin 1.2s linear infinite;
+    }
+
+    .home-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 25px;
+      background: #00ff99;
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .home-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,255,153,0.4);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #00ff99, 0 0 10px #00ff99;
+      }
+      to {
+        text-shadow: 0 0 15px #00ff99, 0 0 30px #00ff99;
+      }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.8rem;
+      opacity: 0.4;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>COMING SOON</h1>
+    <p>We are preparing something awesome.<br>Please check back shortly.</p>
+
+    <div class="loader"></div>
+
+    <!-- Back to Home Button -->
+    <a class="home-btn" href="index.html/">Back to Home</a>
+  </div>
+
+  <footer>
+    © 2025 telugubomma.online
+  </footer>
+</body>
+</html>
