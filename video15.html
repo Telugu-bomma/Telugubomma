@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Telugubomma – Video</title>
+<title>Telugubomma – Next</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="canonical" href="https://www.telugubomma.online/video1.html">
+<!-- CANONICAL -->
+<link rel="canonical" href="https://www.telugubomma.online/next1.html">
 
 <style>
 body {
@@ -14,7 +15,10 @@ body {
   color: #fff;
   font-family: Arial, sans-serif;
   text-align: center;
+
   user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .header {
@@ -36,6 +40,7 @@ body {
   max-width: 700px;
   margin: 0 auto;
   position: relative;
+  cursor: pointer;
 }
 .card img {
   width: 100%;
@@ -43,7 +48,7 @@ body {
   pointer-events: none;
 }
 
-/* DOWNLOAD BUTTON */
+/* SUPER BUTTON */
 .download-btn {
   position: absolute;
   top: 50%;
@@ -53,31 +58,15 @@ body {
   font-size: 18px;
   border: none;
   border-radius: 10px;
-  background: rgba(0,255,0,0.9);
+  background: rgba(0, 255, 0, 0.9);
   color: #000;
   cursor: pointer;
 }
-
-/* QUALITY BUTTONS */
-.quality-box {
-  display: none;
-  margin-top: 20px;
-}
-.quality-box button {
-  margin: 8px;
-  padding: 10px 22px;
-  font-size: 15px;
-  border-radius: 8px;
-  border: none;
-  background: #111;
-  color: #00ff00;
-  border: 1px solid #333;
-  cursor: pointer;
-}
-.quality-box button:hover {
-  background: #1a1a1a;
+.download-btn:hover {
+  background: #22ff22;
 }
 
+/* BACK BUTTON */
 .back-btn {
   margin-top: 30px;
   padding: 10px 26px;
@@ -88,94 +77,98 @@ body {
   color: #00ff00;
   cursor: pointer;
 }
+.back-btn:hover {
+  background: #1a1a1a;
+}
 </style>
 </head>
 
 <body>
 
 <div class="header">
-  <div class="header-title">TELUGUBOMMA</div>
+  <div class="header-title">Telugubomma.online</div>
 </div>
 
 <div class="container">
 
+  <!-- IMAGE + BUTTON -->
   <div class="card" id="clickArea">
     <img id="thumbImage" src="" alt="Video Thumbnail">
-    <button class="download-btn" id="mainBtn">⬇ Download</button>
+    <button class="download-btn">⬇ Download</button>
+    <button class="download-btn">⬇ Next page click on Fast Download Server only</button>
   </div>
 
-  <!-- QUALITY OPTIONS -->
-  <div class="quality-box" id="qualityBox">
-    <button onclick="openVideo('low')">Low</button>
-    <button onclick="openVideo('medium')">Medium</button>
-    <button onclick="openVideo('hd')">HD</button>
-  </div>
+  <!-- BACK -->
+  <button class="back-btn" onclick="location.href='nextindex.html'">
+    ⬅ Back
+  </button>
 
-  <button class="back-btn" onclick="location.href='home.html'">⬅ Back</button>
 </div>
 
 <script>
 /* ===============================
-   AUTO IMAGE DETECTION
+   AUTO IMAGE DETECTION (FIXED)
 ================================ */
 const page = location.pathname.split("/").pop();
-const match = page.match(/video(\d+)\.html/);
-let videoNum = "01";
+const match = page.match(/next(\d+)\.html/);
 
 if (match) {
-  videoNum = match[1].padStart(2, "0");
-  document.getElementById("thumbImage").src = `assets/video${videoNum}.jpg`;
+  const i = parseInt(match[1], 10);
+  const num = i < 10 ? '0' + i : i;
+
+  // ✅ FIXED PATH
+  document.getElementById("thumbImage").src =
+    `assets-next/next${num}.jpg`;
 }
 
 /* ===============================
-   VIDEO URL MAP
+   CLICK LOGIC (2-STEP GATE)
 ================================ */
-const VIDEO_URLS = {
-  hd:     "https://tellybiz.in/?f=1k2e8do",
-  medium: "https://tellybiz.in/?f=1abvylw",
-  low:    "https://tellybiz.in/?f=1abvylw"
-};
-
-/* ===============================
-   CLICK GATE
-================================ */
-let unlocked = false;
+let opened = false;
 
 document.getElementById("clickArea").onclick = () => {
-  if (!unlocked) {
+
+  // FIRST CLICK → POPUP ONLY
+  if (!opened) {
     const popup = window.open("https://www.youtube.com", "_blank");
+
     if (!popup) {
-      alert("⚠ Please allow pop-ups");
+      alert("⚠ Please allow pop-ups to continue");
       return;
     }
-    unlocked = true;
-    document.getElementById("mainBtn").style.display = "none";
-    document.getElementById("qualityBox").style.display = "block";
+
+    opened = true;
+    alert("✅ Click again to start download");
+    return;
+  }
+
+  // SECOND CLICK → DOWNLOAD
+  const popup = window.open(
+    "https://www.moviezwap.zip/download.php?file=74996",
+    "_blank"
+  );
+
+  if (!popup) {
+    alert("⚠ Please allow pop-ups to start download");
   }
 };
 
 /* ===============================
-   FALLBACK LOGIC
-================================ */
-function openVideo(level) {
-  if (VIDEO_URLS[level]) {
-    window.open(VIDEO_URLS[level], "_blank");
-  } else if (level === "low" && VIDEO_URLS.medium) {
-    window.open(VIDEO_URLS.medium, "_blank");
-  } else if (VIDEO_URLS.hd) {
-    window.open(VIDEO_URLS.hd, "_blank");
-  } else {
-    alert("Video not available");
-  }
-}
-
-/* ===============================
-   HARDENING
+   BASIC HARDENING
 ================================ */
 document.addEventListener("contextmenu", e => e.preventDefault());
 document.addEventListener("copy", e => e.preventDefault());
 document.addEventListener("cut", e => e.preventDefault());
 document.addEventListener("selectstart", e => e.preventDefault());
+
+setInterval(() => {
+  if (
+    window.outerWidth - window.innerWidth > 200 ||
+    window.outerHeight - window.innerHeight > 200
+  ) {
+    console.clear();
+  }
+}, 1000);
 </script>
 
 </body>
